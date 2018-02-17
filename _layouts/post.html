@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+{% include article-author-bio-small.html %}
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+
+  <div itemprop="articleBody">
+    <br />
+    {{ content }}
+    <br />
+  </div>
+
+</article>
+
+{% if page.comments %}
+  {% include disqus_comments.html post_title=page.title post_url=page.url%}
+{% endif %}

@@ -1,0 +1,99 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Björn Ebbinghaus
+email: bjoern@ebbinghaus.me
+description: > # this means to ignore newlines until "baseurl:"
+  A page where I can write down what I learn from day to day.
+baseurl:  # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
+# url: "http://bjoern.ebbinghaus.me" # change this to the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+
+# Make sure to exclude 'vendor' from the build
+exclude: [vendor, "Gemfile", "Gemfile.lock"]
+
+# permalink: /:categories/:year/:month/:day/:title.html
+# none is equivalent to /:title.html
+# https://jekyllrb.com/docs/permalinks
+permalink: /:title.html
+
+google_analytics:
+
+# jekyll-theme-simple-blog date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+jekyll-theme-simple-blog:
+  date_format: "%b %-d, %Y"
+
+theme: # leave it empty
+
+show_post_image_posts_list: false
+
+header:
+  image: /assets/img/home-header.jpg
+
+# social
+author:
+  name: "Björn Ebbinghaus"
+  short_bio:
+    en: Computer science student from Düsseldorf, Germany
+  picture: https://avatars3.githubusercontent.com/u/2965273?s=50&v=4
+
+image: /assets/img/profile-225.png
+
+twitter:
+  username: mroerni
+#instagram_username:
+
+#linkedin_username: lorepirri
+
+
+
+# gitlab on site
+#gitlab:
+#  owner_url: https://gitlab.com/lorepirri
+
+# github on site
+github:
+  owner_url: https://github.com/mroerni
+
+
+# translation
+
+t:
+  en:
+    latest-posts:  "Latest Posts"
+    read-more:  "read more"
+    on-word: "on"
+    contact: "Contact"
+    contact-page: "contact.md"
+    read-time: "min read"
+    comments: "comments"
+    go-to-home-page: "Go to the Home Page"
+    months:
+      january: "Jan"
+      february: "Feb"
+      march: "Mar"
+      april: "Apr"
+      may: "May"
+      june: "Jun"
+      july: "Jul"
+      august: "Aug"
+      september: "Sep"
+      october: "Oct"
+      november: "Nov"
+      december : "Dec"
+
+defaults:
+  -
+    scope:
+      type: "posts"
+    values:
+      lang: "en"
+      category: articles
