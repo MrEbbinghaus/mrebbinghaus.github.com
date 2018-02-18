@@ -76,8 +76,8 @@
     {% endif %}
 
     <section class="page-header" style="padding-top: {{ header-padding }}; padding-bottom: {{ header-padding-bottom }}; background: linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.0)), url('{{ site.baseurl }}{{ page.header.image | default: site.header.image }}') center center repeat;">
-      <h1 class="project-name">{{ header_title }}</h1>
-      <h2 class="project-tagline">{{ page-tagline }}</h2>
+      <h1 class="project-name {% if page.invert-head %} project-dark {% endif %}">{{ header_title }}</h1>
+      <h2 class="project-tagline {% if page.invert-head %} project-tagline-dark {% endif %}">{{ page-tagline }}</h2>
 
       {% if page.repository.is_project_page %}
           <a href="{{ page.repository.repository_url }}" class="btn" target="_blank">Source Code</a>
@@ -130,6 +130,8 @@
       }
 
     </script>
-    <script id="dsq-count-scr" src="//ebbinghaus.disqus.com/count.js" async></script>
+    {% if page.comments %}
+        <script id="dsq-count-scr" src="//ebbinghaus.disqus.com/count.js" async></script>
+    {% endif %}
   </body>
 </html>
