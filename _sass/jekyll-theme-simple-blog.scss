@@ -371,7 +371,8 @@ a {
 }
 
 .site-footer-owner {
-  display: block;
+  float: right;
+  display: inline-block;
   font-weight: bold;
 }
 
@@ -388,6 +389,29 @@ a {
   }
 
   @include small {
+  }
+
+  .my-span-text {
+
+    a {
+    	text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+
+    @include large {
+      padding: 0px 5px 0px 5px;
+    }
+
+    @include medium {
+      //font-size: 1rem;
+      padding: 10px 10px 0px 10px;
+    }
+
+    @include small {
+      padding: 10px 10px 0px 10px;
+    }
   }
 
   .my-span-icon {
