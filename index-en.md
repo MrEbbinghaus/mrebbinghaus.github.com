@@ -10,9 +10,9 @@ permalink: /index.html
 header:
   image: /assets/img/home-header.jpg
 tagline: > # this means to ignore newlines until "repository:"
-  Computer scientist student from Düsseldorf, Germany.
+  Computer science student from Düsseldorf, Germany.
 excerpt: >
-  Computer scientist student from Düsseldorf, Germany.
+  Computer science student from Düsseldorf, Germany.
 ref: home
 lang: en
 ---
