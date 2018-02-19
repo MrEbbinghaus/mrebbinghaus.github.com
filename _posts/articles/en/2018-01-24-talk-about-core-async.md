@@ -32,3 +32,8 @@ Thanks to [InVision](https://www.invision.de/), which hosted the event and provi
 Also check out [Joy Clark](https://joyclark.org)s wonderful [sketchnote](https://joyclark.org/sketchnote/clojure-meetup/2018/01/24/clojure-meetup.html)!
 
 The keynote can be found [here](https://www.icloud.com/keynote/0UasaP9fgxNOu-bwgxZMhH5Tg).
+
+<div class="hide-on-small embed-responsive embed-responsive-4by3 ">
+<iframe class="embed-responsive-item" src="https://ebbinghaus.me/core-async/index.html">
+</iframe>
+</div>

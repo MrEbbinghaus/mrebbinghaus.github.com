@@ -351,6 +351,12 @@ a {
   }
 }
 
+.hide-on-small {
+  @include small {
+    display: none !important;
+  }
+}
+
 .site-footer {
   padding-top: 2rem;
   margin-top: 2rem;
@@ -437,11 +443,7 @@ a {
     }
   }
 
-  .hide-on-small {
-    @include small {
-      display: none;
-    }
-  }
+
 
   .my-svg-icon {
 
