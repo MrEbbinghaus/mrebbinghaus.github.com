@@ -34,6 +34,6 @@ Also check out [Joy Clark](https://joyclark.org)s wonderful [sketchnote](https:/
 The keynote can be found [here](https://www.icloud.com/keynote/0UasaP9fgxNOu-bwgxZMhH5Tg).
 
 <div class="hide-on-small embed-responsive embed-responsive-4by3 ">
-<iframe title="embedded presentation" class="embed-responsive-item" src="https://ebbinghaus.me/core-async/index.html">
+<iframe title="embedded presentation" class="embed-responsive-item" src="https://static.ebbinghaus.me/core-async/index.html">
 </iframe>
 </div>
