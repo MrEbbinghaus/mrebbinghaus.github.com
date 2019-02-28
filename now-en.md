@@ -3,7 +3,7 @@ layout: page
 title: Now
 tagline: What I'm doing now
 excerpt: >
-  What I'm doing now. This goes SEO. Updated on 25 Settembre 2017.
+  Writing my masters thesis, participating in PhD programme „Online Participation“
 permalink: /now.html
 header:
   image: /assets/patterns/symphony.png
@@ -11,8 +11,6 @@ ref: now
 lang: en
 order: 1
 ---
-This is a [now page](http://nownownow.com/about){:target="_blank"}, and it was inspired by [the /now movement](https://sivers.org/nowff){:target="_blank"}. If you have your own site, [you should make one](http://nownownow.com/about){:target="_blank"}, too.
-
-Here write what you are up to now.
+Writing my masters thesis, participating in PhD programme „Online Participation“
 
 {% include go-to-home-page.html %}
