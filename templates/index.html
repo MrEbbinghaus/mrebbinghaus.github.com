@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>My Blog!</title>
+{% endblock meta %}
+
+{% block content %}
+<main class="divide-y divide-opacity-10">
+    {% for post in posts %}
+        <article>
+            <h2><a href="{{post.href}}">{{post.title}}</a></h2>
+            {% with date=post.date %}
+            {% include "components/datetime.html" %}
+            {% endwith %}
+            {{post.body|safe}}
+        </article>
+    {% endfor %}
+</main>
+{% endblock content %}

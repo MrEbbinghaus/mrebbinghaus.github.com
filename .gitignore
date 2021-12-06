@@ -1,0 +1,9 @@
+node_modules/
+public/
+.work/
+.calva/
+.sass-cache/
+.lsp/
+.cpcache/
+.clj-kondo/.cache
+.clj-kondo/
