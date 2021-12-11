@@ -18,10 +18,11 @@
 (selmer.parser/cache-off!)
 
 ;;;; Sync images and CSS
+(let [assets (fs/file "assets")]
+  (when (fs/directory? assets)
+    (let [asset-out-dir (fs/create-dirs (fs/file out-dir "assets"))]
+      (fs/copy-tree "assets" asset-out-dir {:replace-existing true}))))
 
-(def asset-dir (fs/create-dirs (fs/file out-dir "assets")))
-
-(fs/copy-tree "assets" asset-dir {:replace-existing true})
 
 (defn compile-css! []
   (print "Compile CSS... ")
