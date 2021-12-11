@@ -23,7 +23,7 @@
 {% endblock%}
 
 {% block content %}
-<article itemscope itemtype="https://schema.org/BlogPosting">
+<article class="pt-4 md:pt-8" itemscope itemtype="https://schema.org/BlogPosting">
     <h1 itemprop="name">{{title}}</h1>
     {% include "components/datetime.html" with date=date %}
 

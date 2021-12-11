@@ -10,25 +10,31 @@
     <link type="application/atom+xml" rel="alternate" href="atom.xml">
     <link rel="stylesheet" href="base.css">
 </head>
-<body class="container bg-white p-8
+<body class="bg-white antialiased
              dark:bg-gray-800 dark:text-white">
 
 <header class="relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-            <nav class="hidden md:flex space-x-10">
-                <a href="index.html" class="text-base font-medium text-gray-500 hover:text-gray-900">
+    <div class="max-w-prose mx-auto px-4 sm:px-6">
+        <div class="flex justify-between items-center border-b-2 border-gray-100 py-2 md:justify-start md:space-x-10">
+            <nav class="md:flex">
+                <a href="index.html" class="text-base font-medium text-gray-500 hover:text-gray-900 p-4">
                 Home
+                </a>
+                <a href="archive.html" class="text-base font-medium text-gray-500 hover:text-gray-900 p-4">
+                Archive
                 </a>
             </nav>
         </div>
     </div>
 </header>
 
-<div class="mx-auto antialiased prose dark:prose-light">
-    {% block content %}
-    {% endblock %}
+<div class="container p-0">
+    <main class="mx-auto prose dark:prose-light px-4 md:px-8">
+        {% block content %}
+        {% endblock %}
+    </main>
 </div>
+
 
 
 </body>
