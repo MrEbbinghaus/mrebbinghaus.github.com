@@ -3,7 +3,7 @@
   <title>REPL adventures</title>
   <link href="https://blog.ebbinghaus.me/atom.xml" rel="self"/>
   <link href="https://blog.ebbinghaus.me/"/>
-  <updated>2021-12-11T17:47:40.916231Z</updated>
+  <updated>2021-12-11T17:50:37.417628Z</updated>
   <id>https://blog.ebbinghaus.me/</id>
   <author>
     <name>Björn Ebbinghaus</name>
@@ -13,6 +13,7 @@
     <link href="https://blog.ebbinghaus.me/my-first-post.html"/>
     <title>My first post!</title>
     <published>2021-12-06T00:00:00Z</published>
+    <updated>2021-12-06T00:00:00Z</updated>
     <content type="html">
       <![CDATA[<p>This is my first post. Hopefully one of many to come!</p>
 ]]>
@@ -26,6 +27,7 @@
     <category term="clojure" label="clojure"/>
     <category term="talk" label="talk"/>
     <published>2018-01-24T00:00:00Z</published>
+    <updated>2018-01-24T00:00:00Z</updated>
     <content type="html">
       <![CDATA[<p>As a programmer who tries to use <a href="https://clojure.org/" rel="nofollow">clojure</a><a href="https://clojurescript.org/" rel="nofollow">(script)</a> wherever possible, I am a frequent visitor of the <a href="https://www.meetup.com/de-DE/Dusseldorf-Clojure-Meetup" rel="nofollow">Clojure Meetup Düsseldorf</a>.
 Recently I was asked, what clojure tools/librarys I am using, worth sharing. It happens that a couple of days before, I came in contact with <a href="https://github.com/clojure/core.async"><code>core.async</code></a> while writing a single page application in clojurescript.
