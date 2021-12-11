@@ -1,4 +1,4 @@
-{:paths ["." "classes"]
+{:paths ["." "src" "classes"]
  :deps {markdown-clj/markdown-clj {:mvn/version "1.10.7"}
         babashka/fs {:mvn/version "0.1.1"}
         hiccup/hiccup {:mvn/version "2.0.0-alpha2"}

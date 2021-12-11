@@ -5,10 +5,10 @@
   new {:doc "Create new blog article"
        :task (th/new)}
   render {:doc "Render blog"
-          :task (load-file "render.clj")}
+          :task (load-file "src/render.clj")}
   watch {:depends [render]
          :doc "Watch posts and templates and call render on file changes"
-         :task (load-file "watch.clj")}
+         :task (load-file "src/watch.clj")}
   clean {:doc "Remove .work and public directory"
          :task (do (fs/delete-tree ".work")
                    (fs/delete-tree "public"))}}}
