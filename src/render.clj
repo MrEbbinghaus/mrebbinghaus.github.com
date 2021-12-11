@@ -198,6 +198,7 @@
               {:term (name tag)
                :label (name tag)}])
            [::atom/published (rfc-3339 date)]
+           [::atom/updated (rfc-3339 date)]
            [::atom/content {:type "html"}
             [:-cdata (get @bodies file)]]])])
       xml/indent-str))
