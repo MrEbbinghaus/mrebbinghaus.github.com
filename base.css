@@ -1028,12 +1028,8 @@ p {
   display: flex;
 }
 
-.hidden {
-  display: none;
-}
-
-.max-w-7xl {
-  max-width: 80rem;
+.max-w-prose {
+  max-width: 65ch;
 }
 
 .items-center {
@@ -1042,12 +1038,6 @@ p {
 
 .justify-between {
   justify-content: space-between;
-}
-
-.space-x-10 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(2.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -1079,8 +1069,12 @@ p {
      object-position: right;
 }
 
-.p-8 {
-  padding: 2rem;
+.p-4 {
+  padding: 1rem;
+}
+
+.p-0 {
+  padding: 0px;
 }
 
 .px-4 {
@@ -1088,9 +1082,13 @@ p {
   padding-right: 1rem;
 }
 
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .text-base {
@@ -1137,5 +1135,14 @@ p {
     --tw-space-x-reverse: 0;
     margin-right: calc(2.5rem * var(--tw-space-x-reverse));
     margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .md\:pt-8 {
+    padding-top: 2rem;
   }
 }
