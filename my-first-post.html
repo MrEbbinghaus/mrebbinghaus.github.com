@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
     
+    <title>My first post!</title>
+    <meta property="og:title" content="My first post!"/>
+    <meta property="og:type" content="article">
 
-    <title></title>
-    
-<meta property="og:title" content="My first post!"/>
-<meta property="og:type" content="article">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "My first post!",
+            "datePublished": "2021-12-06",
+            
+            "author": [{
+                "@type": "Person",
+                "name": "Björn Ebbinghaus"
+              }]
+        }
+        </script>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -30,21 +42,23 @@
 
 <div class="mx-auto antialiased prose dark:prose-light">
     
+<article itemscope itemtype="https://schema.org/BlogPosting">
+    <h1 itemprop="name">My first post!</h1>
+    <time datetime="2021-12-06 12:00">06.12.2021</time>
 
-<article>
-<h1>My first post!</h1>
-<time datetime="2021-12-06 12:00">06.12.2021</time>
+    <div itemprop="description articleBody">
+        <p>This is my first post. Hopefully one of many to come!</p>
 
-<p>This is my first post. Hopefully one of many to come!</p>
+    </div>
 </article>
 
 
 <footer>
-
-<div class="object-right">
-    <a class="page-link" href="archive.html">Archive</a>
-</div>
-
+    
+    <div class="object-right">
+        <a class="page-link" href="archive.html">Archive</a>
+    </div>
+    
 </footer>
 
 </div>
