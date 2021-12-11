@@ -6,7 +6,8 @@
    [markdown.core :as md]
    [selmer.parser :as selmer]
    [clojure.java.shell :refer [sh]]
-   [babashka.curl :as curl]))
+   [babashka.curl :as curl]
+   [clojure.data.xml :as xml]))
 
 
 (def posts (sort-by :date (comp - compare)
@@ -75,7 +76,7 @@
         (when-let [requests-remaining (get headers "x-ratelimit-remaining")]
           (println "Requests left:" requests-remaining))
         (when-let [limit-reset (get headers "x-ratelimit-reset")]
-          (printf "Resets in %d minutes\n" 
+          (printf "Resets in %d minutes\n"
                   (quot (- (parse-long limit-reset) (quot (System/currentTimeMillis) 1000)) 60)))
         (when (= 200 status)
           body)))))
@@ -148,6 +149,60 @@
                             {:posts (last-posts)}))
   (println "Done"))
 
+;;;; Generate atom feeds
+
+(.toInstant #inst "2021")
+;; => #object[java.time.Instant 0x3e093177 "2021-01-01T00:00:00Z"]
+
+;; => false
+
+
+
+(xml/alias-uri 'atom "http://www.w3.org/2005/Atom")
+(import java.time.Instant)
+
+(defn rfc-3339-now []
+  (str (Instant/now)))
+
+(defn rfc-3339 [date]
+  (str (.toInstant date)))
+
+(def blog-root "https://blog.ebbinghaus.me/")
+
+(defn atom-feed
+  ;; validate at https://validator.w3.org/feed/check.cgi
+  [posts]
+  (-> (xml/sexp-as-element
+       [::atom/feed
+        {:xmlns "http://www.w3.org/2005/Atom"}
+        [::atom/title "REPL adventures"]
+        [::atom/link {:href (str blog-root "atom.xml") :rel "self"}]
+        [::atom/link {:href blog-root}]
+        [::atom/updated (rfc-3339-now)]
+        [::atom/id blog-root]
+        [::atom/author
+         [::atom/name "Björn Ebbinghaus"]]
+        (for [{:keys [title tags description date file preview]} posts
+              :when (not preview)
+              :let [html (str/replace file ".md" ".html")
+                    link (str blog-root html)]]
+          [::atom/entry
+           [::atom/id link]
+           [::atom/link {:href link}]
+           [::atom/title title]
+           (when description
+             [::atom/summary description])
+
+           (for [tag tags]
+             [::atom/category
+              {:term (name tag)
+               :label (name tag)}])
+           [::atom/published (rfc-3339 date)]
+           [::atom/content {:type "html"}
+            [:-cdata (get @bodies file)]]])])
+      xml/indent-str))
+
+(spit (fs/file out-dir "atom.xml") (atom-feed posts))
 
 
 (index!)
