@@ -14,12 +14,18 @@
                                              (slurp "posts.edn")))))
 
 (def out-dir "public")
+
+(when-not (fs/exists? out-dir)
+  (fs/create-dir out-dir))
+
+
 (selmer/set-resource-path! "templates/")
 (selmer.parser/cache-off!)
 
 ;;;; Sync images and CSS
 (let [assets (fs/file "assets")]
   (when (fs/directory? assets)
+    (println "Copy assets")
     (let [asset-out-dir (fs/create-dirs (fs/file out-dir "assets"))]
       (fs/copy-tree "assets" asset-out-dir {:replace-existing true}))))
 
