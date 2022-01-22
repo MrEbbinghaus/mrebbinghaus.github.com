@@ -103,7 +103,7 @@
                                         "render.clj"
                                         "tailwind.config.js"
                                         "highlighter.clj"]))
-        body (if false
+        body (if stale?
                (let [body (or (remote-markdown->html markdown-file)
                               (markdown->html markdown-file))]
                  (spit cache-file body)
