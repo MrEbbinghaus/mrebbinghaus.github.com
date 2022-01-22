@@ -23,7 +23,7 @@
   [:body.bg-white.antialiased.dark:bg-gray-800.dark:text-white
    (header)
    [:div.p-0
-    [:main.mx-auto.prose.dark:prose-light.px-4.sm:px-0
+    [:main.mx-auto.prose.dark:prose-invert.px-4.sm:px-0
      content]]])
 
 (defn base [{:keys [title meta content]}]
