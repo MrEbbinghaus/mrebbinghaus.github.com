@@ -7,7 +7,9 @@
    [selmer.parser :as selmer]
    [clojure.java.shell :refer [sh]]
    [babashka.curl :as curl]
-   [clojure.data.xml :as xml]))
+   [clojure.data.xml :as xml]
+   [hiccup2.core :as h]
+   [html.post :as post]))
 
 
 (def posts (sort-by :date (comp - compare)
@@ -89,8 +91,7 @@
 
 (fs/create-dirs (fs/file ".work"))
 
-(doseq [{:keys [file template]
-         :or {template "post.html"}
+(doseq [{:keys [file]
          :as post}
         posts]
   (let [cache-file (fs/file ".work" (html-file file))
@@ -102,17 +103,17 @@
                                         "render.clj"
                                         "tailwind.config.js"
                                         "highlighter.clj"]))
-        body (if stale?
+        body (if false
                (let [body (or (remote-markdown->html markdown-file)
                               (markdown->html markdown-file))]
                  (spit cache-file body)
                  body)
                (slurp cache-file))
         _ (swap! bodies assoc file body)
-        html (selmer/render-file template (assoc post :body body))
+        html (h/html {} (post/page (assoc post :body body)))
 
         html-file (str/replace file ".md" ".html")]
-    (spit (fs/file out-dir html-file) html)))
+    (spit (fs/file out-dir html-file) (str html))))
 
 ;;;; Generate archive page
 
@@ -150,13 +151,6 @@
   (println "Done"))
 
 ;;;; Generate atom feeds
-
-(.toInstant #inst "2021")
-;; => #object[java.time.Instant 0x3e093177 "2021-01-01T00:00:00Z"]
-
-;; => false
-
-
 
 (xml/alias-uri 'atom "http://www.w3.org/2005/Atom")
 (import java.time.Instant)
