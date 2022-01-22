@@ -1,8 +1,8 @@
 {:paths ["." "src" "classes"]
- :deps {markdown-clj/markdown-clj {:mvn/version "1.10.7"}
-        babashka/fs {:mvn/version "0.1.1"}
+ :deps {markdown-clj/markdown-clj {:mvn/version "1.10.8"}
+        babashka/fs {:mvn/version "0.1.2"}
         org.clojure/data.json {:mvn/version "2.4.0"}
         hiccup/hiccup {:mvn/version "2.0.0-alpha2"}
         babashka/pods {:git/url "https://github.com/babashka/pods"
-                       :git/sha "f360afa6135b8bd2d384d9ba4582c0de6fdac804"}
-        selmer/selmer {:mvn/version "1.12.44"}}}
+                       :git/sha "538fc6f4147badf3a457b3eb8f9f95dd3bc947b1"}
+        selmer/selmer {:mvn/version "1.12.49"}}}
