@@ -3,7 +3,7 @@
   <title>REPL adventures</title>
   <link href="https://blog.ebbinghaus.me/atom.xml" rel="self"/>
   <link href="https://blog.ebbinghaus.me/"/>
-  <updated>2022-02-15T20:18:43.678214Z</updated>
+  <updated>2022-02-15T20:52:24.890846Z</updated>
   <id>https://blog.ebbinghaus.me/</id>
   <author>
     <name>Björn Ebbinghaus</name>
@@ -17,6 +17,18 @@
     <content type="html">
       <![CDATA[<p>This is my first post. Hopefully one of many to come!</p>
 ]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://blog.ebbinghaus.me/decide-comma20-demo.html</id>
+    <link href="https://blog.ebbinghaus.me/decide-comma20-demo.html"/>
+    <title>decide: Supporting Participatory Budgeting with Online Argumentation</title>
+    <category term="online-argumentation" label="online-argumentation"/>
+    <category term="demo" label="demo"/>
+    <published>2020-09-01T00:00:00Z</published>
+    <updated>2020-09-01T00:00:00Z</updated>
+    <content type="html">
+      <![CDATA[<p><strong>Authors</strong>: <a class="author" href="mailto:ebbinghaus@hhu.de">Björn Ebbinghaus</a>, Martin Mauve</p><p><a href='https://wwwcn.cs.uni-duesseldorf.de/publications/publications/library/Ebbinghaus2020a.pdf'>PDF</a></p><p><div class="aspect-w-16 aspect-h-9"> <iframe src="https://www.youtube-nocookie.com/embed/Owexcgd5pOU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div></p><h2>Introduction</h2><p>With <i>decide</i> we want to enable a large crowd of participants to decide on a complex issue, such as how to make the best use of a given budget. In particular, we are interested in understanding how online argumentation and online prioritization schemes can be combined to support collective decision-making.</p><p>We have used decide to let our students collectively decide on how to use a real-world budget to improve the computer science course of study at HHU<!&ndash;\cite{Ebbinghaus2019a}&ndash;>. In our demo we will show the setup used in that experiment and report on the outcome.</p><h2>The <i>decide</i> collective decision system</h2><p><i>decide</i> employs a three-step approach to collective decision-making. In the first step participants can introduce proposals. For each proposal an estimated cost is provided by that participant. All participants then use dialog-based argumentation<!&ndash;\cite{Krauthoff2018b}&ndash;> to argue about the validity and priority of the proposals. <!&ndash;This is shown in \autoref{fig:dbas-decide}.&ndash;></p><p>In the second step the proposals are validated. That is to say in our specific experiment we checked if there are any reasons why any of the proposals cannot be realized even if the proposed resources were allocated to it. For example, one proposal required significant construction work which was not feasible. The remaining proposals with the attached argumentation then enter the next step.</p><p>In the final step the participants prioritize the proposals. First, the participants select the proposals that they want to support. Then they order the supported proposals by their own priority <!&ndash;(see \autoref{fig:decide-example})&ndash;>. The arguments attached to the proposals can be viewed and extended in this phase, but no new proposals can be created. The final result is then calculated using a truncated Borda count followed by a greedy collection of proposals which fit the budget.</p><h2>Future Work</h2><p>We have received valuable feedback from the students who used <i>decide</i>. One main issue is that dialog-based argumentation tends to involve the participant in a lengthy exchange of pro and contra arguments. This is good to gain an in-depth understanding of all positions, but it makes it hard to gain a quick overview of the main points. One main issue is therefore to improve the argumentation step and also to test other approaches &ndash;– such as nested pro and contra lists.</p><p>A second issue is the algorithm used to reach a decision. We would like to experiment with other voting schemes and see which of those are considered to be fair by the participants.</p>]]>
     </content>
   </entry>
   <entry>
