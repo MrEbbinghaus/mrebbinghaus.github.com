@@ -23,8 +23,6 @@
        :autor {"@type" "Person"
                :name "Björn Ebbinghaus"}}))]))
 
-(defn date-tag [date]
-  [:time {:datetime (utils/rfc-3339 date)} (utils/date-str date)])
 
 (defn page [{:keys [title body skip-archive?] :as post
              :or {skip-archive? false}}]
@@ -37,7 +35,7 @@
       {:itemscope true
        :itemtype "https://schema.org/BlogPosting"}
       [:h1 {:itemprop "name"} title]
-      (date-tag (:date post))
+      (utils/date-tag (:date post))
 
       [:div {:itemprop "description articleBody"}
        (hu/raw-string body)]]

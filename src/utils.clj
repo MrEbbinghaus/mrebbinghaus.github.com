@@ -11,14 +11,21 @@
   (str (Instant/now)))
 
 (def display-formatter (DateTimeFormatter/ofPattern "dd.MM.yyyy"))
+(def month-formatter (DateTimeFormatter/ofPattern "MMMM yyyy"))
 
-(defn date-str [date]
+(defn date-str [date formatter]
   (let [local-date
         (-> date
             .toInstant
             (.atZone (ZoneId/of "UTC+1"))
             .toLocalDate)]
-    (.format local-date display-formatter)))
+    (.format local-date formatter)))
+
+(defn date-tag [date]
+  [:time {:datetime (rfc-3339 date)} (date-str date display-formatter)])
+
+(defn month-tag [date]
+  [:time {:datetime (rfc-3339 date)} (date-str date month-formatter)])
 
 (defn abbreviate [s]
   (if (< 110 (count s))

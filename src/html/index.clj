@@ -2,12 +2,13 @@
   (:require
     [html.base :as base]
     [html.post :as post]
-    [hiccup.util :as hu]))
+    [hiccup.util :as hu]
+    [utils :as utils]))
 
 (defn entry [{:keys [title date body] :as post}]
   [:article
    [:h2 [:a {:href (post/href post)} title]]
-   (post/date-tag date)
+   (utils/date-tag date)
    (hu/raw-string body)])
 
 (defn index-list [{:keys [posts]}]

@@ -1,13 +1,14 @@
 (ns html.archive
   (:require
     [html.base :as base]
-    [html.post :as post]))
+    [html.post :as post]
+    [utils :as utils]))
 
 (defn entry [post]
   [:article
    [:a {:href (post/href post)} (:title post)]
    "-"
-   (post/date-tag (:date post))])
+   (utils/date-tag (:date post))])
 
 (defn archive-list [{:keys [posts]}]
   [:ol
