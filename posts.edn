@@ -1,6 +1,7 @@
 {:title "My first post!"
  :file "my-first-post.md"
  :date #inst "2021-12-06"}
+
 {:title "Talk about clojure.core.async"
  :description "I did a talk about core.async for the 'Clojure Meetup Düsseldorf'."
  :header-img "https://pbs.twimg.com/media/DUVE-4xXkAAOmL9.jpg"

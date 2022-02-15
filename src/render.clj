@@ -15,7 +15,7 @@
 
 (def posts (sort-by :date (comp - compare)
                     (edn/read-string (format "[%s]"
-                                             (slurp "posts.edn")))))
+                                       (slurp "posts.edn")))))
 
 (def out-dir "public")
 
@@ -113,6 +113,10 @@
         html-file (str/replace file ".md" ".html")]
     (spit (fs/file out-dir html-file) (str html))))
 
+(def posts-with-body
+  (for [post-entry posts]
+    (assoc post-entry :body (get @bodies (:file post-entry)))))
+
 ;;;; Generate archive page
 
 (spit (fs/file out-dir "archive.html")
@@ -120,19 +124,10 @@
 
 
 ;;;; Generate index page with last 3 posts
-(defn last-posts
-  ([] (last-posts 3))
-  ([n]
-   (for [{:keys [file preview] :as post} (take n posts)
-         :when (not preview)]
-     (-> post
-         (assoc :href (str/replace file ".md" ".html")
-                :body (get @bodies file))))))
-
 (defn index! []
   (print "Render Index... ")
   (spit (fs/file out-dir "index.html")
-    (h/html {} (index/page {:posts posts})))
+    (h/html {} (index/page {:posts posts-with-body})))
   (println "Done"))
 
 ;;;; Generate atom feeds

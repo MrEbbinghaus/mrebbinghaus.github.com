@@ -12,14 +12,19 @@
 
 (defn index-list [{:keys [posts]}]
   [:ol.list-none.divide-y.divide-opacity-10.p-0
-   (for [post (take 3 (reverse (sort-by :date posts)))
-         :when (not (:preview post))]
+   (for [post posts]
      [:li (entry post)])])
 
 (defn page [{:keys [posts]}]
-  (base/base
-    {:title "Björn's Blog"
-     :content
-     (list
-       [:h1.mt-3.sr-only "Last posts"]
-       (index-list {:posts posts}))}))
+  (let [latest-posts
+        (->> posts
+          (remove :preview)
+          (sort-by :date)
+          reverse
+          (take 3))]
+    (base/base
+      {:title "Björn's Blog"
+       :content
+       (list
+         [:h1.mt-3.sr-only "Last posts"]
+         (index-list {:posts latest-posts}))})))
