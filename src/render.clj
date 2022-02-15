@@ -4,13 +4,13 @@
    [clojure.edn :as edn]
    [clojure.string :as str]
    [markdown.core :as md]
-   [selmer.parser :as selmer]
    [clojure.java.shell :refer [sh]]
    [babashka.curl :as curl]
    [clojure.data.xml :as xml]
    [hiccup2.core :as h]
    [html.post :as post]
-   [html.archive :as archive]))
+   [html.archive :as archive]
+   [html.index :as index]))
 
 
 (def posts (sort-by :date (comp - compare)
@@ -22,9 +22,6 @@
 (when-not (fs/exists? out-dir)
   (fs/create-dir out-dir))
 
-
-(selmer/set-resource-path! "templates/")
-(selmer.parser/cache-off!)
 
 ;;;; Sync images and CSS
 (let [assets (fs/file "assets")]
@@ -135,8 +132,7 @@
 (defn index! []
   (print "Render Index... ")
   (spit (fs/file out-dir "index.html")
-        (selmer/render-file "index.html"
-                            {:posts (last-posts)}))
+    (h/html {} (index/page {:posts posts})))
   (println "Done"))
 
 ;;;; Generate atom feeds
