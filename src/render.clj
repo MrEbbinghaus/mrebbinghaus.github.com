@@ -89,7 +89,7 @@
 
 (fs/create-dirs (fs/file ".work"))
 
-(doseq [{:keys [file]
+(doseq [{:keys [file local-render?]
          :as post}
         posts]
   (let [cache-file (fs/file ".work" (html-file file))
@@ -102,8 +102,10 @@
                                         "tailwind.config.js"
                                         "highlighter.clj"]))
         body (if stale?
-               (let [body (or (remote-markdown->html markdown-file)
-                              (markdown->html markdown-file))]
+               (let [body (or
+                            (and (not local-render?)
+                              (remote-markdown->html markdown-file))
+                            (markdown->html markdown-file))]
                  (spit cache-file body)
                  body)
                (slurp cache-file))

@@ -19,6 +19,7 @@
   (let [latest-posts
         (->> posts
           (remove :preview)
+          (filter #(= :post (get % :type :post)))
           (sort-by :date)
           reverse
           (take 3))]

@@ -1,3 +1,10 @@
+{:title "decide: Supporting Participatory Budgeting with Online Argumentation"
+ :type :publication
+ :tags #{"online-argumentation", "demo"}
+ :date #inst "2020-09"
+ :file "decide-comma20-demo.md"
+ :local-render? true}
+
 {:title "My first post!"
  :file "my-first-post.md"
  :date #inst "2021-12-06"}
