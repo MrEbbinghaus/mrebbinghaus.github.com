@@ -1,3 +1,10 @@
+{:title "Biosphere"
+ :type :project
+ :tags #{"clojure" "virtual-life"}
+ :file "biosphere.md"
+ :date #inst "2020-02-29"
+ :project/status :active}
+
 {:title "decide: Supporting Participatory Budgeting with Online Argumentation"
  :type :publication
  :tags #{"online-argumentation", "demo"}

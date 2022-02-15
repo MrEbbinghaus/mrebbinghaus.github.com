@@ -17,6 +17,7 @@
     [:div.flex.justify-between.items-center.border-b-2.border-gray-100.py-2.md:justify-start.md:space-x-10
      [:nav.md:flex
       [:a.text-base.font-medium.text-gray-500.hover:text-gray-900.p-4 {:href "index.html"} "Home"]
+      [:a.text-base.font-medium.text-gray-500.hover:text-gray-900.p-4 {:href "projects.html"} "Projects"]
       [:a.text-base.font-medium.text-gray-500.hover:text-gray-900.p-4 {:href "publications.html"} "Publications"]
       [:a.text-base.font-medium.text-gray-500.hover:text-gray-900.p-4 {:href "archive.html"} "Archive"]]]]])
 

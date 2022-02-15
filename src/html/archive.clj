@@ -7,7 +7,7 @@
 (defn entry [post]
   [:article
    [:a {:href (post/href post)} (:title post)]
-   "-"
+   " - "
    (utils/date-tag (:date post))])
 
 (defn archive-list [{:keys [posts]}]

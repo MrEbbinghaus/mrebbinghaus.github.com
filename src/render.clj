@@ -11,7 +11,8 @@
    [html.post :as post]
    [html.archive :as archive]
    [html.index :as index]
-   [html.publications :as publications]))
+   [html.publications :as publications]
+   [html.projects :as projects]))
 
 
 (def posts (sort-by :date (comp - compare)
@@ -120,20 +121,20 @@
   (for [post-entry posts]
     (assoc post-entry :body (get @bodies (:file post-entry)))))
 
-;;;; Generate archive page
-(spit (fs/file out-dir "archive.html")
-  (h/html {} (archive/page {:posts posts})))
+;;;; Generate static pages
+(def static-pages
+  {"index.html" index/page
+   "archive.html" archive/page
+   "projects.html" projects/page
+   "publications.html" publications/page})
 
-
-;;;; Generate index page with last 3 posts
 (defn index! []
-  (print "Render Index... ")
-  (spit (fs/file out-dir "index.html")
-    (h/html {} (index/page {:posts posts-with-body})))
-  (println "Done"))
+  (doseq [[html-file render-fn] static-pages]
+    (print "Render" html-file "... ")
+    (spit (fs/file out-dir html-file)
+      (h/html {} (render-fn {:posts posts-with-body})))
+    (println "Done")))
 
-(spit (fs/file out-dir "publications.html")
-  (h/html {} (publications/page {:posts posts-with-body})))
 
 ;;;; Generate atom feeds
 

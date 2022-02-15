@@ -1,20 +1,15 @@
 (ns html.index
   (:require
     [html.base :as base]
-    [html.post :as post]
     [hiccup.util :as hu]
-    [utils :as utils]))
+    [utils :as utils]
+    [html.common :as common]))
 
-(defn entry [{:keys [title date body] :as post}]
-  [:article
-   [:h2 [:a {:href (post/href post)} title]]
-   (utils/date-tag date)
-   (hu/raw-string body)])
-
-(defn index-list [{:keys [posts]}]
-  [:ol.list-none.divide-y.divide-opacity-10.p-0
-   (for [post posts]
-     [:li (entry post)])])
+(defmethod common/entry :default
+  [{:keys [date body] :as post}]
+  (common/base post
+    (utils/date-tag date)
+    (hu/raw-string body)))
 
 (defn page [{:keys [posts]}]
   (let [latest-posts
@@ -23,10 +18,10 @@
           (filter #(= :post (get % :type :post)))
           (sort-by :date)
           reverse
-          (take 3))]
+          #_(take 3))]
     (base/base
       {:title "Björn's Blog"
        :content
        (list
          [:h1.mt-3.sr-only "Last posts"]
-         (index-list {:posts latest-posts}))})))
+         (common/list {:posts latest-posts}))})))

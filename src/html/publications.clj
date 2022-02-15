@@ -1,18 +1,12 @@
 (ns html.publications
   (:require
     [html.base :as base]
-    [html.post :as post]
-    [utils :as utils]))
+    [utils :as utils]
+    [html.common :as common]))
 
-(defn entry [{:keys [title date] :as post}]
-  [:article
-   [:h2 [:a {:href (post/href post)} title]]
-   (utils/month-tag date)])
-
-(defn index-list [{:keys [posts]}]
-  [:ol.list-none.divide-y.divide-opacity-10.p-0
-   (for [post posts]
-     [:li (entry post)])])
+(defmethod common/entry :publication [{:keys [date] :as post}]
+  (common/base post
+    (utils/month-tag date)))
 
 (defn page [{:keys [posts]}]
   (let [publications
@@ -26,4 +20,4 @@
        :content
        (list
          [:h1.mt-3 "My Publications"]
-         (index-list {:posts publications}))})))
+         (common/list {:posts publications}))})))
