@@ -19,12 +19,16 @@
       [:a.text-base.font-medium.text-gray-500.hover:text-gray-900.p-4 {:href "index.html"} "Home"]
       [:a.text-base.font-medium.text-gray-500.hover:text-gray-900.p-4 {:href "archive.html"} "Archive"]]]]])
 
+(defn footer []
+  [:footer.relative.h-16])
+
 (defn body [{:keys [content]}]
   [:body.bg-white.antialiased.dark:bg-gray-800.dark:text-white
    (header)
    [:div.p-0
     [:main.mx-auto.prose.dark:prose-invert.px-4.sm:px-0
-     content]]])
+     content]]
+   (footer)])
 
 (defn base [{:keys [title meta content]}]
   [:html {:lang "en"}
