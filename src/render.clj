@@ -10,7 +10,8 @@
    [hiccup2.core :as h]
    [html.post :as post]
    [html.archive :as archive]
-   [html.index :as index]))
+   [html.index :as index]
+   [html.publications :as publications]))
 
 
 (def posts (sort-by :date (comp - compare)
@@ -120,7 +121,6 @@
     (assoc post-entry :body (get @bodies (:file post-entry)))))
 
 ;;;; Generate archive page
-
 (spit (fs/file out-dir "archive.html")
   (h/html {} (archive/page {:posts posts})))
 
@@ -131,6 +131,9 @@
   (spit (fs/file out-dir "index.html")
     (h/html {} (index/page {:posts posts-with-body})))
   (println "Done"))
+
+(spit (fs/file out-dir "publications.html")
+  (h/html {} (publications/page {:posts posts-with-body})))
 
 ;;;; Generate atom feeds
 
