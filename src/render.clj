@@ -9,7 +9,8 @@
    [babashka.curl :as curl]
    [clojure.data.xml :as xml]
    [hiccup2.core :as h]
-   [html.post :as post]))
+   [html.post :as post]
+   [html.archive :as archive]))
 
 
 (def posts (sort-by :date (comp - compare)
@@ -70,18 +71,18 @@
     (when
      (and (fs/regular-file? file)
           (< (fs/size file) api-size-limit))
-      (let [{:keys [status headers body]}
-            (curl/post "https://api.github.com/markdown/raw"
-                       {:headers {"Accept" "application/vnd.github.v3+json"
-                                  "Content-Type" "text/x-markdown"}
-                        :body file})]
-        (when-let [requests-remaining (get headers "x-ratelimit-remaining")]
-          (println "Requests left:" requests-remaining))
-        (when-let [limit-reset (get headers "x-ratelimit-reset")]
-          (printf "Resets in %d minutes\n"
-                  (quot (- (parse-long limit-reset) (quot (System/currentTimeMillis) 1000)) 60)))
-        (when (= 200 status)
-          body)))))
+     (let [{:keys [status headers body]}
+           (curl/post "https://api.github.com/markdown/raw"
+                      {:headers {"Accept" "application/vnd.github.v3+json"
+                                 "Content-Type" "text/x-markdown"}
+                       :body file})]
+       (when-let [requests-remaining (get headers "x-ratelimit-remaining")]
+         (println "Requests left:" requests-remaining))
+       (when-let [limit-reset (get headers "x-ratelimit-reset")]
+         (printf "Resets in %d minutes\n"
+                 (quot (- (parse-long limit-reset) (quot (System/currentTimeMillis) 1000)) 60)))
+       (when (= 200 status)
+         body)))))
 
 ;; re-used when generating atom.xml
 (def bodies (atom {}))
@@ -117,20 +118,8 @@
 
 ;;;; Generate archive page
 
-(defn post-links []
-  (reverse
-   (sort-by
-    :date
-    (for [{:keys [file title date preview]} posts
-          :when (not preview)]
-      {:title title
-       :date date
-       :href (str/replace file ".md" ".html")}))))
-
 (spit (fs/file out-dir "archive.html")
-      (selmer/render-file "archive.html"
-                          {:title "Archive"
-                           :posts (post-links)}))
+  (h/html {} (archive/page {:posts posts})))
 
 
 ;;;; Generate index page with last 3 posts

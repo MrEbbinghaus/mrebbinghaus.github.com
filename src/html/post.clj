@@ -1,10 +1,13 @@
 (ns html.post
-  (:require 
-   [html.base :refer [base]]
-   [clojure.data.json :as json]
-   [hiccup.util :as hu]
-   [utils :as utils]))
+  (:require
+    [html.base :refer [base]]
+    [clojure.data.json :as json]
+    [hiccup.util :as hu]
+    [utils :as utils]
+    [clojure.string :as str]))
 
+(defn href [{:keys [file]}]
+  (str/replace file ".md" ".html"))
 
 (defn post-meta [{:keys [title date]}]
   (list 
