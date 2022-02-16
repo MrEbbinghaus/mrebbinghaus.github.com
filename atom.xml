@@ -3,7 +3,7 @@
   <title>REPL adventures</title>
   <link href="https://blog.ebbinghaus.me/atom.xml" rel="self"/>
   <link href="https://blog.ebbinghaus.me/"/>
-  <updated>2022-02-16T00:31:34.735220Z</updated>
+  <updated>2022-02-16T13:15:08.315229Z</updated>
   <id>https://blog.ebbinghaus.me/</id>
   <author>
     <name>Björn Ebbinghaus</name>
@@ -23,6 +23,8 @@
     <id>https://blog.ebbinghaus.me/decide-comma20-demo.html</id>
     <link href="https://blog.ebbinghaus.me/decide-comma20-demo.html"/>
     <title>decide: Supporting Participatory Budgeting with Online Argumentation</title>
+    <category term="decision-making" label="decision-making"/>
+    <category term="participatory budgeting" label="participatory budgeting"/>
     <category term="online-argumentation" label="online-argumentation"/>
     <category term="demo" label="demo"/>
     <published>2020-09-01T00:00:00Z</published>
@@ -40,6 +42,21 @@
     <published>2020-02-29T00:00:00Z</published>
     <updated>2020-02-29T00:00:00Z</updated>
     <content type="html"/>
+  </entry>
+  <entry>
+    <id>https://blog.ebbinghaus.me/jebediah-arguing-with-a-social-bot.html</id>
+    <link href="https://blog.ebbinghaus.me/jebediah-arguing-with-a-social-bot.html"/>
+    <title>Jebediah – Arguing With a Social Bot</title>
+    <category term="dialog-game execution platform" label="dialog-game execution platform"/>
+    <category term="online-argumentation" label="online-argumentation"/>
+    <category term="conversational ui" label="conversational ui"/>
+    <category term="demo" label="demo"/>
+    <category term="AI" label="AI"/>
+    <published>2018-09-01T00:00:00Z</published>
+    <updated>2018-09-01T00:00:00Z</updated>
+    <content type="html">
+      <![CDATA[<p><strong>Authors</strong>: Christian Meter, <a class="author" href="mailto:ebbinghaus@hhu.de">Björn Ebbinghaus</a>, Martin Mauve</p><p><a href='https://wwwcn.cs.uni-duesseldorf.de/publications/publications/library/Meter2018a.pdf'>PDF</a></p><h2>Introduction</h2><p>In prior work we introduced the <a href='https://dbas.cs.uni-duesseldorf.de'><i>Dialog-Based Argumentation System</i> (D-BAS)</a> [1], a <i>Dialog Game Execution Platform</i> (DGEP) [2] for dialog-based online argumentation. D-BAS allows users to exchange proposals and arguments with each other in the form of a time-shifted dialog where arguments are presented and acted upon one-at-a-time. It is designed as a full-stack, stand alone web-application.</p><p>However, currently, the vast majority of online discussions takes place in social networks such as Facebook or Twitter and not on dedicated argumentation web-sites.  We therefore investigated how the functionality of a dialog-game execution platform, such as D-BAS, can be included in a seamless way into social networks. Our solution to the problem is a social bot called Jebediah. It provides a front-end to DGEPs that can be integrated into social networks in a seamless way.</p><h2><i>Jebediah</i> – a social bot for online argumentation</h2><p><figure>     <img src="assets/jeb.png" alt="Dialog between a user and the conversation agent.">     <figcaption><b>Figure 1.</b> Conversation with Jebediah. On the right side is the user's           input. On the left side are the answers.     </figcaption> </figure></p><p><i>Jebediah</i> is a social bot based on Google’s framework <a href='https://dialogflow.com'>Dialogflow</a> for <i>Artificial Intelligence</i> (AI) development. It connects Dialogflow with a DGEP such as D-BAS’ backend. Dialogflow enables a seamless integration into many popular social networks, e.g. Facebook or Twitter, and provides  processing of text-input from conversations. We leverage this to enable natural language access where the AI is used to parse and interpret the user’s input, whereas the interpreted data is sent to D-BAS’ DGEP, in order to calculate the next steps in the discussion. This setup allows us to directly have a conversation with interested users without the need to leave the current site and to provide a solution to reduce crowded comment sections, e.g. inside a Facebook post.</p><p>Jebediah exposes the full functionality of D-BAS, i.e. collect statements from users, integrate them into a discussion graph and present the next statement to the user (see Fig. 1). It is then possible, in natural language, to interact with arguments and experiences from those users. Users can also start a dialog with the agent and ask for possible entities in the discussion, e.g. topics or other positions.</p><p>Where D-BAS’ interface shows the user a list of possible steps to choose from, this is hardly manageable in a text-only or even voice-only environment. Therefore Jebediah has to lead the user in a way that advances the conversation into deeper levels of the topic, while being flexible enough to react to user actions which are not a usual part of the D-BAS discussion flow. This is even more important in a voice interface where the user has to memorize the current part of the discussion.</p><h2>Related Work</h2><p>Arvina [3] is a system that bears a lot of similarities to our work. With Arvina it is possible to replay previously stored discussions and interact with the recording. Multiple real users can participate in the debate and also add new statements. Jebediah, in contrast, aims at enabling a seamless integration of a DGEP into social networks and at providing a discussion using natural language.</p><h2>References</h2><ul><li>[1] T. Krauthoff, C. Meter, G. Betz, M. Baurmann, and M. Mauve, “D-BAS – A Dialog-Based Online Argumentation System,” in Computational Models of Argument, September 2018, pp. 325–336.</li><li>[2] F. Bex, J. Lawrence, and C. Reed, “Generalising argument dialogue with the dialogue game executionplatform.” in COMMA, 2014, pp. 141–152.</li><li>[3] M. Snaith, J. Lawrence, and C. Reed, “Mixed initiative argument in public deliberation,” Online Deliberation, 2010.</li></ul>]]>
+    </content>
   </entry>
   <entry>
     <id>https://blog.ebbinghaus.me/talk-core-async.html</id>
