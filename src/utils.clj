@@ -10,7 +10,7 @@
 (defn rfc-3339-now []
   (str (Instant/now)))
 
-(def display-formatter (DateTimeFormatter/ofPattern "dd.MM.yyyy"))
+(def full-date-formatter (DateTimeFormatter/ofPattern "dd.MM.yyyy"))
 (def month-formatter (DateTimeFormatter/ofPattern "MMMM yyyy"))
 
 (defn date-str [date formatter]
@@ -21,11 +21,13 @@
             .toLocalDate)]
     (.format local-date formatter)))
 
-(defn date-tag [date]
-  [:time {:datetime (rfc-3339 date)} (date-str date display-formatter)])
+(defn- html-time-tag [formatter]
+  (fn [date]
+    (when date
+      [:time.mr-2.text-sm.text-slate-500 {:datetime (rfc-3339 date)} (date-str date formatter)])))
 
-(defn month-tag [date]
-  [:time {:datetime (rfc-3339 date)} (date-str date month-formatter)])
+(def full-date-tag (html-time-tag full-date-formatter))
+(def month-tag (html-time-tag month-formatter))
 
 (defn abbreviate [s]
   (if (< 110 (count s))

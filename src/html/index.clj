@@ -3,13 +3,16 @@
     [html.base :as base]
     [hiccup.util :as hu]
     [utils :as utils]
-    [html.common :as common]))
+    [html.common :as common]
+    [html.post :as post]))
 
 (defmethod common/entry :default
-  [{:keys [date body] :as post}]
-  (common/base post
-    (utils/date-tag date)
-    (hu/raw-string body)))
+  [{:keys [title date tags body] :as post}]
+  [:article
+   [:h2 [:a {:href (post/href post)} title]]
+   (utils/full-date-tag date)
+   (common/tag-row tags)
+   (hu/raw-string body)])
 
 (defn page [{:keys [posts]}]
   (let [latest-posts

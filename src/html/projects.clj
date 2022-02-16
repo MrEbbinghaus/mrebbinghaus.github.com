@@ -2,17 +2,20 @@
   (:require
     [html.base :as base]
     [html.common :as common]
-    [utils :as utils]))
+    [utils :as utils]
+    [html.post :as post]))
 
-(defmethod common/entry :project [{:keys [date project/state] :as post}]
-  (common/base post
-    (when date
-      (utils/date-tag date))
-    (when state
-      [:p "Status:"
-       (case state
-         :active "Active"
-         "")])))
+(defmethod common/entry :project
+  [{:keys [title date project/status tags] :as post}]
+  [:article
+   [:h2 [:a {:href (post/href post)} title]]
+   (utils/full-date-tag date)
+   (common/tag-row tags)
+   (when status
+     [:p "Status: "
+      (case status
+        :active "Active"
+        "")])])
 
 (defn page [{:keys [posts]}]
   (let [projects

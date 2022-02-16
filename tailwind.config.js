@@ -3,7 +3,7 @@ module.exports = {
     purge: [
         './public/**/*.html'
     ],
-    darkMode: 'off', // or 'media' or 'class'
+    darkMode: 'media', // or 'media' or 'class'
     theme: {
         extend: {
             container: {
@@ -13,7 +13,7 @@ module.exports = {
             p: {
                 text: 'justify'
             },
-            typography: {
+           /* typography: {
                 light: {
                     css: {
                         color: 'white',
@@ -23,14 +23,14 @@ module.exports = {
                         a: {color: 'white'}
                     }
                 },
-            }
+            }*/
         },
     },
-    variants: {
+    /*variants: {
         extend: {
             typography: ['dark']
         },
-    },
+    },*/
     plugins: [
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio')

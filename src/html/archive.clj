@@ -6,12 +6,11 @@
 
 (defn entry [post]
   [:article
-   [:a {:href (post/href post)} (:title post)]
-   " - "
-   (utils/date-tag (:date post))])
+   (utils/full-date-tag (:date post))
+   [:a.ml-2 {:href (post/href post)} (:title post)]])
 
 (defn archive-list [{:keys [posts]}]
-  [:ol
+  [:ol.list-none.p-0
    (for [post (reverse (sort-by :date posts))
          :when (not (:preview post))]
      [:li (entry post)])])

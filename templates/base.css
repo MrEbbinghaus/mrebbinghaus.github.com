@@ -9,3 +9,15 @@
         @apply text-justify;
     }
 }
+
+@layer components {
+    .badge {
+        @apply inline-block;
+        @apply rounded-full;
+        @apply text-xs font-semibold;
+        @apply px-2 py-1;
+        @apply border-2;
+        @apply lowercase;
+        @apply mr-1;
+    }
+}
