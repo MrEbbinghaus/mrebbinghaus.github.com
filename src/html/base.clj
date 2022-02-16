@@ -1,4 +1,6 @@
-(ns html.base)
+(ns html.base
+  (:require
+    [utils :as utils]))
 
 (defn head [{:keys [title meta]}]
   (apply vector 
@@ -26,12 +28,15 @@
         [:a.text-base.font-medium.text-slate-500.hover:text-black.dark:text-slate-300.dark:hover:text-white.md:p-4.p-2 {:href href} label])]]]])
 
 (defn footer []
-  [:footer.relative.h-16])
+  [:footer.relative.h-16.text-center
+   [:div.text-slate-400.dark:text-slate-700.text-center.p-4
+    (format "© %s Copyright " (utils/current-year))
+    [:a {:href "mailto:bjoern@ebbinghaus.me"} "Björn Ebbinghaus"]]])
 
 (defn body [{:keys [content]}]
-  [:body.bg-white.subpixel-antialiased.dark:bg-gray-900.dark:text-white
+  [:body.bg-white.subpixel-antialiased.dark:bg-gray-900.dark:text-white.flex.flex-col.h-screen
    (header)
-   [:div.p-0
+   [:div.p-0.mb-auto
     [:main.mx-auto.prose.prose-zinc.dark:prose-invert.px-4.sm:px-0
      content]]
    (footer)])

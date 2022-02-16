@@ -7,3 +7,6 @@ public/
 .cpcache/
 .clj-kondo/.cache
 .clj-kondo/
+
+.idea
+*.iml

@@ -10,6 +10,9 @@
 (defn rfc-3339-now []
   (str (Instant/now)))
 
+(defn current-year []
+  (subs (rfc-3339-now) 0 4))
+
 (def full-date-formatter (DateTimeFormatter/ofPattern "dd.MM.yyyy"))
 (def month-formatter (DateTimeFormatter/ofPattern "MMMM yyyy"))
 
