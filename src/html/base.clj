@@ -10,6 +10,7 @@
            [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
            [:meta {:charset "UTF-8"}]
            [:link {:type "application/atom+xml" :rel "alternate" :href "atom.xml"}]
+           [:link {:rel "stylesheet" :href "assets/github-dark.css"}]
            [:link {:rel "stylesheet" :href "base.css"}]]
           meta)))
 
