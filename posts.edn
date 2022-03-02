@@ -1,3 +1,9 @@
+{:title "My minimal fulcro tutorial"
+ :tags #{"clojure", "fulcro", "tutorial"}
+ :file "fulcro-tutorial-1.md"
+ :date #inst "2022-02-02"
+ :preview true}
+
 {:title "Biosphere"
  :type :project
  :tags #{"clojure" "virtual-life"}
