@@ -3,11 +3,274 @@
   <title>REPL adventures</title>
   <link href="https://blog.ebbinghaus.me/atom.xml" rel="self"/>
   <link href="https://blog.ebbinghaus.me/"/>
-  <updated>2022-03-02T16:22:21.597427Z</updated>
+  <updated>2022-03-18T11:55:08.921043Z</updated>
   <id>https://blog.ebbinghaus.me/</id>
   <author>
     <name>Björn Ebbinghaus</name>
   </author>
+  <entry>
+    <id>https://blog.ebbinghaus.me/fulcro-explained-1.html</id>
+    <link href="https://blog.ebbinghaus.me/fulcro-explained-1.html"/>
+    <title>Fulcro Explained 1</title>
+    <category term="clojure" label="clojure"/>
+    <category term="tutorial" label="tutorial"/>
+    <category term="fulcro" label="fulcro"/>
+    <published>2022-02-02T00:00:00Z</published>
+    <updated>2022-02-02T00:00:00Z</updated>
+    <content type="html">
+      <![CDATA[<p>In this article, I will explain the core principles behind <a href="https://github.com/fulcrologic/fulcro">Fulcro</a>.
+I will show you how to organize state in a normalized graph database and how to write basic components to utilize it.</p>
+<p>For a complete run-trough I recommend reading the <a href="https://book.fulcrologic.com/" rel="nofollow">Fulcro Book</a> or looking into the <a href="https://fulcro-community.github.io/main/index.html" rel="nofollow">community tutorials</a>.</p>
+<h2>
+<a id="user-content-your-first-components" class="anchor" href="#your-first-components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Your first components</h2>
+<p>Imagine, you are building a social-network kind of application, and you want to implement a profile page:</p>
+<div class="highlight highlight-source-clojure"><pre>(<span class="pl-k">ns</span> <span class="pl-e">fulcro.tutorial</span>
+  (<span class="pl-c1">:require</span> 
+    [com.fulcorlogic.fulcro.components <span class="pl-c1">:as</span> comp <span class="pl-c1">:refer</span> [<span class="pl-k">defsc</span>]]
+    [com.fulcrologic.fulcro.dom <span class="pl-c1">:as</span> dom <span class="pl-c1">:refer</span> [div p h2 ul li img]]))
+
+(<span class="pl-k">defn</span> <span class="pl-e">profile-page</span> []
+  (<span class="pl-en">div</span>
+    (<span class="pl-en">p</span>
+      (<span class="pl-en">h2</span> <span class="pl-s"><span class="pl-pds">"</span>Spouse<span class="pl-pds">"</span></span>)
+      (<span class="pl-en">div</span> 
+        (<span class="pl-en">img</span> {<span class="pl-c1">:src</span> <span class="pl-s"><span class="pl-pds">"</span>alice.png<span class="pl-pds">"</span></span>}) 
+        <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>)
+    (<span class="pl-en">p</span>
+      (<span class="pl-en">h2</span> <span class="pl-s"><span class="pl-pds">"</span>My Friends<span class="pl-pds">"</span></span>)
+      (<span class="pl-en">ul</span>
+        (<span class="pl-en">li</span> (<span class="pl-en">div</span> 
+             (<span class="pl-en">img</span> {<span class="pl-c1">:src</span> <span class="pl-s"><span class="pl-pds">"</span>alice.png<span class="pl-pds">"</span></span>}) 
+             <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>))
+        (<span class="pl-en">li</span> (<span class="pl-en">div</span> 
+             (<span class="pl-en">img</span> {<span class="pl-c1">:src</span> <span class="pl-s"><span class="pl-pds">"</span>bob.png<span class="pl-pds">"</span></span>}) 
+             <span class="pl-s"><span class="pl-pds">"</span>Bob<span class="pl-pds">"</span></span>))
+        (<span class="pl-en">li</span> (<span class="pl-en">div</span> 
+             (<span class="pl-en">img</span> {<span class="pl-c1">:src</span> <span class="pl-s"><span class="pl-pds">"</span>charlie.png<span class="pl-pds">"</span></span>}) 
+             <span class="pl-s"><span class="pl-pds">"</span>Charlie<span class="pl-pds">"</span></span>))))))</pre></div>
+<p>But that's not why you are here. You are a programmer. You don't hard code information, and you don't write large functions. You want to break things apart and reuse them:</p>
+<div class="highlight highlight-source-clojure"><pre>(<span class="pl-k">defn</span> <span class="pl-e">person</span> [{<span class="pl-c1">:keys</span> [name profile-pic-href]}]
+  (<span class="pl-en">div</span>
+    (<span class="pl-en">img</span> {<span class="pl-c1">:src</span> profile-pic-href})
+    name))
+
+(<span class="pl-k">defn</span> <span class="pl-e">friend-list</span> [friends]
+ (<span class="pl-en">ul</span> 
+   (<span class="pl-k">for</span> [friend friends]
+     (<span class="pl-en">li</span> (<span class="pl-en">person</span> friend)))))
+
+(<span class="pl-k">defn</span> <span class="pl-e">profile-page</span> [{<span class="pl-c1">:keys</span> [spouse friends]}]
+  (<span class="pl-en">div</span>
+    (<span class="pl-en">p</span> 
+      (<span class="pl-en">h2</span> <span class="pl-s"><span class="pl-pds">"</span>Spouse<span class="pl-pds">"</span></span>)
+      (<span class="pl-en">person</span> spouse))
+    (<span class="pl-en">p</span>
+      (<span class="pl-en">h2</span> <span class="pl-s"><span class="pl-pds">"</span>My Friends<span class="pl-pds">"</span></span>)
+      (<span class="pl-en">friend-list</span> friends))))</pre></div>
+<p>Great, now you can feed the data like this to your function:</p>
+<div class="highlight highlight-source-clojure"><pre>(<span class="pl-k">def</span> <span class="pl-e">data</span>
+    {<span class="pl-c1">:spouse</span> {<span class="pl-c1">:name</span> <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>
+              <span class="pl-c1">:profile-pic-href</span> <span class="pl-s"><span class="pl-pds">"</span>alice.png<span class="pl-pds">"</span></span>}
+     <span class="pl-c1">:friends</span> [{<span class="pl-c1">:name</span> <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>
+               <span class="pl-c1">:profile-pic-href</span> <span class="pl-s"><span class="pl-pds">"</span>alice.png<span class="pl-pds">"</span></span>}
+              {<span class="pl-c1">:name</span> <span class="pl-s"><span class="pl-pds">"</span>Bob<span class="pl-pds">"</span></span>
+               <span class="pl-c1">:profile-pic-href</span> <span class="pl-s"><span class="pl-pds">"</span>bob.png<span class="pl-pds">"</span></span>}
+              {<span class="pl-c1">:name</span> <span class="pl-s"><span class="pl-pds">"</span>Charlie<span class="pl-pds">"</span></span>
+               <span class="pl-c1">:profile-pic-href</span> <span class="pl-s"><span class="pl-pds">"</span>charlie.png<span class="pl-pds">"</span></span>}]})</pre></div>
+<p>This looks fine for the <em>state</em> of your client... BUT</p>
+<p>Did you notice, that you have the data for your spouse twice?
+What do you do, when you want to change the profile picture?
+You will have to remember every place where you put that link! Terrifying!</p>
+<p>A function for this could look like this:</p>
+<div class="highlight highlight-source-clojure"><pre>(<span class="pl-k">defn</span> <span class="pl-e">update-profile-pic</span> [data {<span class="pl-c1">:keys</span> [name new-profile-pic-href]}]
+ (<span class="pl-en">-&gt;</span> data
+   (<span class="pl-en">assoc-in</span> [<span class="pl-c1">:spouse</span> <span class="pl-c1">:profile-pic-href</span>] new-profile-pic-href)
+   (<span class="pl-en">update</span> <span class="pl-c1">:friends</span> 
+           #(<span class="pl-en">map</span> 
+             (<span class="pl-k">fn</span> [friend]
+               (<span class="pl-k">if</span> (<span class="pl-en">=</span> name (<span class="pl-c1">:name</span> friend)
+                 (<span class="pl-en">assoc</span> friend <span class="pl-c1">:profile-pic-href</span> new-profile-pic-href)
+                 friend)))
+             %))))</pre></div>
+<h2>
+<a id="user-content-data-normalization" class="anchor" href="#data-normalization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data Normalization</h2>
+<p>But you can avoid this mess, by preventing the duplication.</p>
+<p>Imagine you organize your data with references like this:</p>
+<div class="highlight highlight-source-clojure"><pre>{<span class="pl-c1">:person</span> {<span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>
+          {<span class="pl-c1">:name</span> <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>
+           <span class="pl-c1">:profile-pic-href</span> <span class="pl-s"><span class="pl-pds">"</span>alice.png<span class="pl-pds">"</span></span>}
+          <span class="pl-s"><span class="pl-pds">"</span>Bob<span class="pl-pds">"</span></span>
+          {<span class="pl-c1">:name</span> <span class="pl-s"><span class="pl-pds">"</span>Bob<span class="pl-pds">"</span></span>
+           <span class="pl-c1">:profile-pic-href</span> <span class="pl-s"><span class="pl-pds">"</span>bob.png<span class="pl-pds">"</span></span>}
+          <span class="pl-s"><span class="pl-pds">"</span>Charlie<span class="pl-pds">"</span></span>
+          {<span class="pl-c1">:name</span> <span class="pl-s"><span class="pl-pds">"</span>Charlie<span class="pl-pds">"</span></span>
+           <span class="pl-c1">:profile-pic-href</span> <span class="pl-s"><span class="pl-pds">"</span>charlie.png<span class="pl-pds">"</span></span>}}
+ <span class="pl-c1">:spouse</span> [<span class="pl-c1">:person</span> <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>]
+ <span class="pl-c1">:friends</span> [[<span class="pl-c1">:person</span> <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>] [<span class="pl-c1">:person</span> <span class="pl-s"><span class="pl-pds">"</span>Bob<span class="pl-pds">"</span></span>] [<span class="pl-c1">:person</span> <span class="pl-s"><span class="pl-pds">"</span>Charlie<span class="pl-pds">"</span></span>]]}</pre></div>
+<p>A vector like <code>[:person "Alice"]</code> is really nothing different like the vector you would use for <code>get-in</code>, <code>assoc-in</code> and <code>update-in</code>.</p>
+<p>Now the ugly update function from above becomes as simple as:</p>
+<div class="highlight highlight-source-clojure"><pre>(<span class="pl-k">defn</span> <span class="pl-e">update-profile-pic</span> [data {<span class="pl-c1">:keys</span> [name new-profile-pic-href]}]
+ (<span class="pl-en">update-in</span> data [<span class="pl-c1">:person</span> name] 
+   assoc <span class="pl-c1">:profile-pic-href</span> new-profile-pic-href)</pre></div>
+<p>But what about our render functions? They don't know or care about references or duplication. All they want is their data to render.</p>
+<p>This is where Fulcro comes to the rescue.
+Fulcro is first and foremost only about solving this problem.
+How to organize data so that they can be modified easily, but at the same time feed it to my render functions?</p>
+<h2>
+<a id="user-content-introducing-components-and-the-defsc-macro" class="anchor" href="#introducing-components-and-the-defsc-macro" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introducing components and the <code>defsc</code> macro.</h2>
+<p>Components are a representation of a piece of data in our state.
+The <code>defsc</code> macro allows us to define the data a component depends on (<em>query</em>)
+and how to the reference (called <em>ident</em>) to this data looks like.</p>
+<div class="highlight highlight-source-clojure"><pre><span class="pl-c"><span class="pl-c">;</span> the render function from above</span>
+(<span class="pl-k">defn</span> <span class="pl-e">person</span> [{<span class="pl-c1">:keys</span> [name profile-pic-href]}]
+  (<span class="pl-en">div</span>
+    (<span class="pl-en">img</span> {<span class="pl-c1">:src</span> profile-pic-href})
+    name))
+
+<span class="pl-c"><span class="pl-c">;</span> becomes this:</span>
+(<span class="pl-k">defsc</span> <span class="pl-e">Person</span> [_ {<span class="pl-c1">:keys</span> [name profile-pic-href]}]
+  {:query [<span class="pl-c1">:name</span> <span class="pl-c1">:profile-pic-href</span>]
+   <span class="pl-c1">:ident</span> [<span class="pl-c1">:person</span> <span class="pl-c1">:name</span>]}
+  (<span class="pl-en">div</span>
+    (<span class="pl-en">img</span> {<span class="pl-c1">:src</span> profile-pic-href})
+    name))</pre></div>
+<p>Let us examine what we see here:</p>
+<div class="highlight highlight-source-clojure"><pre>(<span class="pl-k">defsc</span> <span class="pl-e">Person</span> 
+  [_ <span class="pl-c"><span class="pl-c">;</span> ignore for now</span>
+
+   <span class="pl-c"><span class="pl-c">;</span>; Same as the parameters from the `person` function. This map contains the data we get.</span>
+   {<span class="pl-c1">:keys</span> [name profile-pic-href] <span class="pl-c1">:as</span> props}] 
+  {<span class="pl-c"><span class="pl-c">;</span>; This describes the data we depend on. No sense in passing you the `profile-pic-href` if you don't need it, for example.</span>
+   :query [<span class="pl-c1">:name</span> <span class="pl-c1">:profile-pic-href</span>]
+   
+   <span class="pl-c"><span class="pl-c">;</span>; this describes where this entity is located in your data</span>
+   <span class="pl-c"><span class="pl-c">;</span>; [:person :name] is actually a shorthand for:</span>
+   <span class="pl-c1">:ident</span> (<span class="pl-k">fn</span> [] [<span class="pl-c1">:person</span> (<span class="pl-c1">:name</span> props)])}
+  (<span class="pl-en">div</span>
+    (<span class="pl-en">img</span> {<span class="pl-c1">:src</span> profile-pic-href})
+    name))</pre></div>
+<p>All well and good.. But how does the data actually get to the component?
+Let me simplify.</p>
+<p>On the one hand, we had our data with the duplications. There were no idents, just nesting. That kind of format is called a tree.</p>
+<p>On the other hand, we would like to have our data <em>normalized</em>, meaning our data is <em>always</em> located at the same position and only that position.</p>
+<p>The query and idents helps us translate the one to the other and back.</p>
+<pre><code>tree = query + normalized-data
+normalized-data = query + tree
+</code></pre>
+<p>Example:</p>
+<div class="highlight highlight-source-clojure"><pre>(<span class="pl-k">def</span> <span class="pl-e">spouse</span> 
+  {<span class="pl-c1">:name</span> <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>
+   <span class="pl-c1">:profile-pic-href</span> <span class="pl-s"><span class="pl-pds">"</span>alice.png<span class="pl-pds">"</span></span>})
+
+<span class="pl-c"><span class="pl-c">;</span>; Note: The functions in Fulcro are not called `normalize` and `denormalize`, but the idea is the same.</span>
+
+(<span class="pl-k">def</span> <span class="pl-e">normalized-state</span>
+  (<span class="pl-en">normalize</span> <span class="pl-c"><span class="pl-c">;</span> called `comp/merge-component` in fulcro</span>
+    {}      <span class="pl-c"><span class="pl-c">;</span> The current state. The result of the normalization get deep-merged into this</span>
+    Person  <span class="pl-c"><span class="pl-c">;</span> Recipe how to normalize</span>
+    spouse) <span class="pl-c"><span class="pl-c">;</span> Data to normalize</span>
+<span class="pl-c"><span class="pl-c">;</span>; =&gt; </span>
+<span class="pl-c"><span class="pl-c">;</span>; {:person {"Alice"</span>
+<span class="pl-c"><span class="pl-c">;</span>;           {:name "Alice"</span>
+<span class="pl-c"><span class="pl-c">;</span>;            :profile-pic-href "alice.png"}}}</span>
+
+(<span class="pl-en">denormalize</span> 
+    [<span class="pl-c1">:person</span> <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>] <span class="pl-c"><span class="pl-c">;</span> Where to begin the query?</span>
+    Person           <span class="pl-c"><span class="pl-c">;</span> Recipe how to denormalize</span>
+    normalized-state) <span class="pl-c"><span class="pl-c">;</span> Data to denormalize</span>
+<span class="pl-c"><span class="pl-c">;</span>; =&gt; </span>
+<span class="pl-c"><span class="pl-c">;</span>; {:name "Alice"</span>
+<span class="pl-c"><span class="pl-c">;</span>;  :profile-pic-href "alice.png"}</span>
+
+<span class="pl-c"><span class="pl-c">;</span>; denormalize may look like:</span>
+(<span class="pl-en">-&gt;</span> normalized-state
+  (<span class="pl-en">get-in</span> [<span class="pl-c1">:person</span> <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>])
+  (<span class="pl-en">select-keys</span> (<span class="pl-en">comp/get-query</span> Person)))</pre></div>
+<h3>
+<a id="user-content-composition" class="anchor" href="#composition" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Composition</h3>
+<p>You may have noticed the line with the note: <em>Where to begin the query?</em>
+In our application, we have <em>one</em> normalized-state. So we want <em>one</em> query to get <em>one</em> tree to pass to our render function.</p>
+<p>Coming back to our complete code from before, we can replace the <code>person</code> function with our component:</p>
+<div class="highlight highlight-source-clojure"><pre>(<span class="pl-k">defsc</span> <span class="pl-e">Person</span> [_ {<span class="pl-c1">:keys</span> [name profile-pic-href]}]
+  {:query [<span class="pl-c1">:name</span> <span class="pl-c1">:profile-pic-href</span>]
+   <span class="pl-c1">:ident</span> [<span class="pl-c1">:person</span> <span class="pl-c1">:name</span>]}
+  (<span class="pl-en">div</span>
+    (<span class="pl-en">img</span> {<span class="pl-c1">:src</span> profile-pic-href})
+    name))
+
+<span class="pl-c"><span class="pl-c">;</span>; We need an actual function to call for rendering. The prefix `ui-` is idiomatic.</span>
+(<span class="pl-k">def</span> <span class="pl-e">ui-person</span> (<span class="pl-en">comp/factory</span> Person {<span class="pl-c1">:keyfn</span> <span class="pl-c1">:name</span>}))
+
+(<span class="pl-k">defn</span> <span class="pl-e">friend-list</span> [friends]
+ (<span class="pl-en">ul</span> 
+   (<span class="pl-k">for</span> [friend friends]
+     (<span class="pl-en">li</span> (<span class="pl-en">ui-person</span> friend)))))
+
+(<span class="pl-k">defn</span> <span class="pl-e">profile-page</span> [{<span class="pl-c1">:keys</span> [spouse friends]}]
+  (<span class="pl-en">div</span>
+    (<span class="pl-en">p</span> 
+      (<span class="pl-en">h2</span> <span class="pl-s"><span class="pl-pds">"</span>Spouse<span class="pl-pds">"</span></span>)
+      (<span class="pl-en">ui-person</span> spouse))
+    (<span class="pl-en">p</span>
+      (<span class="pl-en">h2</span> <span class="pl-s"><span class="pl-pds">"</span>My Friends<span class="pl-pds">"</span></span>)
+      (<span class="pl-en">friend-list</span> friends))))</pre></div>
+<p>But the real <em>root</em> of our application is still the <code>profile-page</code> function. That's the function that gets the <em>one tree</em> to render. So this is the place where we need our <em>one query</em> to start.</p>
+<p>So let us compose:</p>
+<div class="highlight highlight-source-clojure"><pre><span class="pl-c"><span class="pl-c">;</span> First. Let's create a component for the ProfilePage:</span>
+(<span class="pl-k">defsc</span> <span class="pl-e">ProfilePage</span> [_ {<span class="pl-c1">:keys</span> [spouse friends]}]
+
+  <span class="pl-c"><span class="pl-c">;</span>; Now to the query. What do we want? (Spoilers: The props above.) </span>
+  <span class="pl-c"><span class="pl-c">;</span>; But these props are not primitive data. They are data another component depens on, so we want to include the query of that component. (This is called a join)</span>
+  {<span class="pl-c1">:query</span> [{<span class="pl-c1">:spouse</span> (<span class="pl-en">comp/get-query</span> Person)}
+           {<span class="pl-c1">:friends</span> (<span class="pl-en">comp/get-query</span> Person)}]} <span class="pl-c"><span class="pl-c">;</span> note there is no special syntax for a to-many join. </span>
+  (<span class="pl-en">div</span>
+    (<span class="pl-en">p</span> 
+      (<span class="pl-en">h2</span> <span class="pl-s"><span class="pl-pds">"</span>Spouse<span class="pl-pds">"</span></span>)
+      (<span class="pl-en">ui-person</span> spouse))
+    (<span class="pl-en">p</span>
+      (<span class="pl-en">h2</span> <span class="pl-s"><span class="pl-pds">"</span>My Friends<span class="pl-pds">"</span></span>)
+      (<span class="pl-en">friend-list</span> friends)))</pre></div>
+<h4>
+<a id="user-content-where-is-the-ident" class="anchor" href="#where-is-the-ident" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Where is the <code>:ident</code>?</h4>
+<p>Not every component requires an ident. In the case of the <em>root</em>-component, it wouldn't even make sense. It would be like: <code>(get-in data [])</code></p>
+<h3>
+<a id="user-content-the-final-code" class="anchor" href="#the-final-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Final Code</h3>
+<div class="highlight highlight-source-clojure"><pre>(<span class="pl-k">ns</span> <span class="pl-e">fulcro.tutorial</span>
+  (<span class="pl-c1">:require</span> 
+    [com.fulcorlogic.fulcro.components <span class="pl-c1">:as</span> comp <span class="pl-c1">:refer</span> [<span class="pl-k">defsc</span>]]
+    [com.fulcrologic.fulcro.dom <span class="pl-c1">:as</span> dom <span class="pl-c1">:refer</span> [div p h2 ul li img]]))
+
+(<span class="pl-k">defsc</span> <span class="pl-e">Person</span> [_ {<span class="pl-c1">:keys</span> [name profile-pic-href]}]
+  {:query [<span class="pl-c1">:name</span> <span class="pl-c1">:profile-pic-href</span>]
+   <span class="pl-c1">:ident</span> [<span class="pl-c1">:person</span> <span class="pl-c1">:name</span>]}
+  (<span class="pl-en">div</span>
+    (<span class="pl-en">img</span> {<span class="pl-c1">:src</span> profile-pic-href})
+    name))
+
+(<span class="pl-k">def</span> <span class="pl-e">ui-person</span> (<span class="pl-en">comp/factory</span> Person {<span class="pl-c1">:keyfn</span> <span class="pl-c1">:name</span>}))
+
+(<span class="pl-k">defn</span> <span class="pl-e">friend-list</span> [friends]
+ (<span class="pl-en">ul</span> 
+   (<span class="pl-k">for</span> [friend friends]
+     (<span class="pl-en">li</span> (<span class="pl-en">ui-person</span> friend)))))
+
+(<span class="pl-k">defsc</span> <span class="pl-e">ProfilePage</span> [_ {<span class="pl-c1">:keys</span> [spouse friends]}]
+  {<span class="pl-c1">:query</span> [{<span class="pl-c1">:spouse</span> (<span class="pl-en">comp/get-query</span> Person)}
+           {<span class="pl-c1">:friends</span> (<span class="pl-en">comp/get-query</span> Person)}]} 
+  (<span class="pl-en">div</span>
+    (<span class="pl-en">p</span> 
+      (<span class="pl-en">h2</span> <span class="pl-s"><span class="pl-pds">"</span>Spouse<span class="pl-pds">"</span></span>)
+      (<span class="pl-en">ui-person</span> spouse))
+    (<span class="pl-en">p</span>
+      (<span class="pl-en">h2</span> <span class="pl-s"><span class="pl-pds">"</span>My Friends<span class="pl-pds">"</span></span>)
+      (<span class="pl-en">friend-list</span> friends)))</pre></div>
+<h2>
+<a id="user-content-follow-up-words" class="anchor" href="#follow-up-words" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Follow-up words</h2>
+<p>Fulcro has a lot more <em>things</em> going on. If you read about fulcro, keep in mind: The data normalization is the core thing you need to understand to use fulcro. You need to understand <em>how</em> and <em>why</em> queries and components get composed like they do, to have a chance to understand the rest.</p>
+<p>When you feel ready I urge you to go through this in the <a href="https://book.fulcrologic.com/#_getting_started" rel="nofollow">Fulcro Book Chapter 4</a>. There is a lot more you <em>can</em> learn.</p>
+]]>
+    </content>
+  </entry>
   <entry>
     <id>https://blog.ebbinghaus.me/my-first-post.html</id>
     <link href="https://blog.ebbinghaus.me/my-first-post.html"/>
