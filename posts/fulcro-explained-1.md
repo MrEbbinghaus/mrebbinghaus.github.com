@@ -1,7 +1,7 @@
-In this tutorial, you will learn the basic idea behind [Fulcro](https://github.com/fulcrologic/fulcro). 
+In this article, I will explain the core principles behind [Fulcro](https://github.com/fulcrologic/fulcro). 
 I will show you how to organize state in a normalized graph database and how to write basic components to utilize it. 
 
-This tutorial is focused only on the principles. For a complete run-trough I recommend reading the [Fulcro Book](https://book.fulcrologic.com/)
+For a complete run-trough I recommend reading the [Fulcro Book](https://book.fulcrologic.com/) or looking into the [community tutorials](https://fulcro-community.github.io/main/index.html).
 
 ## Your first components
 
