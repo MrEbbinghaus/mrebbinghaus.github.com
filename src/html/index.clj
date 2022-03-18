@@ -12,7 +12,9 @@
    [:h2 [:a {:href (post/href post)} title]]
    (utils/full-date-tag date)
    (common/tag-row tags)
-   (hu/raw-string (or abstract body))])
+   (if abstract
+     [:p :abstract]
+     (hu/raw-string body))])
 
 (defn page [{:keys [posts]}]
   (let [latest-posts
