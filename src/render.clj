@@ -101,7 +101,6 @@
                                         "posts.edn"
                                         "templates"
                                         "render.clj"
-                                        "tailwind.config.js"
                                         "highlighter.clj"]))
         body (if stale?
                (let [body (or

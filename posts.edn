@@ -2,7 +2,8 @@
  :tags #{"clojure", "fulcro", "tutorial"}
  :file "fulcro-explained-1.md"
  :aliases #{"fulcro-tutorial-1"}
- :date #inst "2022-02-02"}
+ :date #inst "2022-02-02"
+ :abstract "In this article, I will explain the core principles behind Fulcro. I will show you how to organize state in a normalized graph database and how to write basic components to utilize it."}
 
 {:title "Biosphere"
  :type :project

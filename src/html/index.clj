@@ -7,12 +7,12 @@
     [html.post :as post]))
 
 (defmethod common/entry :default
-  [{:keys [title date tags body] :as post}]
+  [{:keys [title date tags body abstract] :as post}]
   [:article
    [:h2 [:a {:href (post/href post)} title]]
    (utils/full-date-tag date)
    (common/tag-row tags)
-   (hu/raw-string body)])
+   (hu/raw-string (or abstract body))])
 
 (defn page [{:keys [posts]}]
   (let [latest-posts
