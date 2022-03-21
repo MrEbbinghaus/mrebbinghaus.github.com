@@ -41,3 +41,6 @@ jobs:
       with:
         branch: gh-pages
         folder: public
+        
+    - name: Deploy to IPFS
+      run: npx ipfs-deploy public
