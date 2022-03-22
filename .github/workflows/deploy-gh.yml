@@ -8,6 +8,7 @@ on:
 jobs:      
  build-and-deploy:
   runs-on: ubuntu-latest
+  environment: github-pages
   steps:
     - uses: actions/setup-node@v2
     - uses: actions/setup-java@v2
@@ -43,4 +44,8 @@ jobs:
         folder: public
         
     - name: Deploy to IPFS
-      run: npx ipfs-deploy public
+      env:
+        APIKEY: ${{ secrets.NETCUP_API_KEY }}
+        APIPASSWORD: ${{ secrets.NETCUP_API_PASSWORD }}
+        CUSTOMERID: ${{ secrets.NETCUP_CUSTOMERNUMBER }}
+      run: npx ipfs-deploy public | bb deploy_to_ipfs.clj
