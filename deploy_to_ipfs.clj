@@ -69,6 +69,7 @@
        :customernumber customer-number
        :apipassword api-password}
       login
-      (update-dnslink! (str "dnslink=/ipfs/" (str/trim cid)))))
+      (update-dnslink! (str "dnslink=/ipfs/" (str/trim cid))))
+  cid)
 
 (-main (slurp *in*))
