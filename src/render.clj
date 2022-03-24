@@ -15,9 +15,12 @@
    [html.projects :as projects]))
 
 
-(def posts (sort-by :date (comp - compare)
-                    (edn/read-string (format "[%s]"
-                                       (slurp "posts.edn")))))
+(def posts (->> "posts.edn"
+                slurp
+                (format "[%s]")
+                edn/read-string
+                (sort-by :date)
+                reverse))
 
 (def out-dir "public")
 
@@ -114,6 +117,7 @@
         html (h/html {} (post/page (assoc post :body body)))
 
         html-file (str/replace file ".md" ".html")]
+    (fs/copy markdown-file (fs/file out-dir file))
     (spit (fs/file out-dir html-file) (str html))))
 
 (def posts-with-body
