@@ -13,7 +13,7 @@
    (utils/full-date-tag date)
    (common/tag-row tags)
    (if abstract
-     [:p :abstract]
+     [:p abstract]
      (hu/raw-string body))])
 
 (defn page [{:keys [posts]}]
