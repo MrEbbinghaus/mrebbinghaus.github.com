@@ -117,7 +117,7 @@
         html (h/html {} (post/page (assoc post :body body)))
 
         html-file (str/replace file ".md" ".html")]
-    (fs/copy markdown-file (fs/file out-dir file))
+    (fs/copy markdown-file (fs/file out-dir file) {:replace-existing true})
     (spit (fs/file out-dir html-file) (str html))))
 
 (def posts-with-body
