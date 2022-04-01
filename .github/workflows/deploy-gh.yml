@@ -47,7 +47,7 @@ jobs:
       id: deploy-to-ipfs
       env:
         IPFS_DEPLOY_PINATA__API_KEY: ${{ secrets.PINATA_API_KEY }}
-        IPFS_DEPLOY_PINATA__API_SECRET: ${{ secrets.PINATA_API_SECRET }}
+        IPFS_DEPLOY_PINATA__SECRET_API_KEY: ${{ secrets.PINATA_API_SECRET }}
       run: echo "::set-output name=CID::$(npx ipfs-deploy -p infura -p pinata public)"
       
     - name: Update DNSLINK
