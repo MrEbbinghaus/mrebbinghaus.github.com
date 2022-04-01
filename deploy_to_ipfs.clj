@@ -65,6 +65,8 @@
 
 
 (defn -main [cid]
+  (when (str/blank? cid)
+    (System/exit 1))
   (-> {:apikey api-key
        :customernumber customer-number
        :apipassword api-password}
