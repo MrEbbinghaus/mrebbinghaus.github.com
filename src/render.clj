@@ -158,7 +158,7 @@
   (-> (xml/sexp-as-element
        [::atom/feed
         {:xmlns "http://www.w3.org/2005/Atom"}
-        [::atom/title "REPL adventures"]
+        [::atom/title "Björn's Blog"]
         [::atom/link {:href (str blog-root "atom.xml") :rel "self"}]
         [::atom/link {:href blog-root}]
         [::atom/updated (rfc-3339-now)]
