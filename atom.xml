@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>REPL adventures</title>
+  <title>Björn's Blog</title>
   <link href="https://blog.ebbinghaus.me/atom.xml" rel="self"/>
   <link href="https://blog.ebbinghaus.me/"/>
-  <updated>2022-04-01T21:32:58.743733Z</updated>
+  <updated>2022-04-13T12:49:55.707784Z</updated>
   <id>https://blog.ebbinghaus.me/</id>
   <author>
     <name>Björn Ebbinghaus</name>
