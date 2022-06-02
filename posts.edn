@@ -29,6 +29,15 @@
  :file "decide-comma20-demo.md"
  :local-render? true}
 
+{:title "Better Decision-Making Through Collaborative Development of Proposals"
+ :type :publication
+ :doi "https://doi.org/10.1007/978-3-031-05544-7_2"
+ :abstract "In a traditional decision-making process, proposals are made and usually commented on by the participants, and finally a vote is taken. We have found in past public decision-making processes that there are also discussions about negative sides of proposals together with possible improvements of them. We have taken this as an opportunity to model the improvement of proposals within the decision-making process.\n\nOur new model for this is similar to version control systems like git work. Proposals in a decision process can have none, one or several predecessors. This structure allows different constructs of the real world to be modelled. Where previously only proposals could be made without reference and structure among each other, the system presented in this work allows modelling of further developments of proposals or even coalitions and compromises, in a real-time collaborative decision-making process.\n\nTo validate our ideas, we tested them in two controlled experiments and concluded that our modifications are useful."
+ :tags #{"Online-participation" "decision-making" "Applications"}
+ :date #inst "2022-06-16"
+ :file "cooperative-proposals-hcii22.md"
+ :local-render? true}
+
 {:title "My first post!"
  :file "my-first-post.md"
  :date #inst "2021-12-06"}
