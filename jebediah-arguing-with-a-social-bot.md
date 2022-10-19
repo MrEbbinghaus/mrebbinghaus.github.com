@@ -1,6 +1,6 @@
 **Authors**: Christian Meter, <a class="author" href="mailto:ebbinghaus@hhu.de">Björn Ebbinghaus</a>, Martin Mauve
 
-[PDF](https://wwwcn.cs.uni-duesseldorf.de/publications/publications/library/Meter2018a.pdf)
+[PDF](https://publications.cs.hhu.de/library/Meter2018a.pdf)
 
 ## Introduction
 In prior work we introduced the [_Dialog-Based Argumentation System_ (D-BAS)](https://dbas.cs.uni-duesseldorf.de) [1], a
