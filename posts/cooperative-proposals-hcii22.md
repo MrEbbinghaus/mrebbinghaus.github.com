@@ -1,6 +1,6 @@
 **Authors**: <a class="author" href="mailto:ebbinghaus@hhu.de">Björn Ebbinghaus</a>, Martin Mauve
 
-[PDF](https://wwwcn.cs.uni-duesseldorf.de/publications/publications/library/Ebbinghaus2022a.pdf)
+[PDF](https://publications.cs.hhu.de/library/Ebbinghaus2022a.pdf)
 [DOI](https://doi.org/10.1007/978-3-031-05544-7_2)
 <details>
 <summary>BibTeX</summary>
