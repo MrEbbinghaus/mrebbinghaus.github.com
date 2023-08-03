@@ -21,7 +21,7 @@
        "@type" "BlogPosting"
        :headline (utils/abbreviate title)
        :datePublished (utils/rfc-3339 date)
-       :autor {"@type" "Person"
+       :author {"@type" "Person"
                :name "Björn Ebbinghaus"}}))]))
 
 
