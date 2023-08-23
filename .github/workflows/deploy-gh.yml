@@ -1,58 +1,63 @@
 name: Deploy to GitHub Pages
 
-on: 
+on:
   push:
-    branches: 
-      - main
-
-jobs:      
- build-and-deploy:
-  runs-on: ubuntu-latest
-  environment: github-pages
-  steps:
-    - uses: actions/setup-node@v2
-    - uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: '17'
-
-    
+    branches: ["main"]
   
-    - name: Install clojure tools
-      uses: DeLaGuardo/setup-clojure@3.7
-      with:
-        cli: latest
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
-    - name: Install babashka
-      run: bash < <(curl -s https://raw.githubusercontent.com/babashka/babashka/master/install)
 
-    - name: Checkout 🛎️
-      uses: actions/checkout@v2
-      with:
-        persist-credentials: false
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
-    - run: npm install
-    - run: clojure -e ":ok"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - name: Install Node
+        uses: actions/setup-node@v3
 
-    - name: Build
-      run: bb render
-
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: gh-pages
-        folder: public
-        
-    # - name: Deploy to IPFS
-    #   id: deploy-to-ipfs
-    #   env:
-    #     IPFS_DEPLOY_PINATA__API_KEY: ${{ secrets.PINATA_API_KEY }}
-    #     IPFS_DEPLOY_PINATA__SECRET_API_KEY: ${{ secrets.PINATA_API_SECRET }}
-    #   run: echo "::set-output name=CID::$(npx ipfs-deploy -p pinata public)"
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
       
-    # - name: Update DNSLINK
-    #   env:
-    #     APIKEY: ${{ secrets.NETCUP_API_KEY }}
-    #     APIPASSWORD: ${{ secrets.NETCUP_API_PASSWORD }}
-    #     CUSTOMERID: ${{ secrets.NETCUP_CUSTOMERNUMBER }}
-    #   run: echo "${{ steps.deploy-to-ipfs.outputs.CID }}" | bb deploy_to_ipfs.clj
+      - name: Install Node Dependencies
+        run: npm install
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Install clojure tools
+        uses: DeLaGuardo/setup-clojure@11.0
+        with:
+          bb: latest 
+
+      - name: Render Pages
+        run: bb render
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: public/
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
