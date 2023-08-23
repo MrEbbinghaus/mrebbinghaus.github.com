@@ -103,8 +103,8 @@
                                        [markdown-file
                                         "posts.edn"
                                         "templates"
-                                        "render.clj"
-                                        "highlighter.clj"]))
+                                        "src/render.clj"
+                                        "src/html/"]))
         body (if stale?
                (let [body (or
                             (and (not local-render?)
