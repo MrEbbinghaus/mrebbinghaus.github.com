@@ -14,16 +14,19 @@
 
 {:title "Jebediah – Arguing With a Social Bot"
  :type :publication
+ :authors ["Christian Meter", "Björn Ebbinghaus", "Martin Mauve"]
  :abstract "In this demonstration we will showcase Jebediah, a social bot based on Google’s Dialogflow. Jebediah is a front-end to dialog-game execution platforms that enable their seamless integration into popular social networks such as Facebook or Twitter. Users can interact with the social bot using natural language while Jebediah translates the user input to a format that can be interpreted by a dialog game execution platform and vice versa."
- :pdf "https://wwwcn.cs.uni-duesseldorf.de/publications/publications/library/Meter2018a.pdf"
+ :pdf "https://publications.cs.hhu.de/library/Meter2018a.pdf"
  :tags #{"demo", "online-argumentation", "conversational ui", "dialog-game execution platform", "AI"}
  :date #inst "2018-09"
  :file "jebediah-arguing-with-a-social-bot.md"
- :local-render? true}
+ :local-render? true
+ :doi "https://doi.org/10.3233/978-1-61499-906-5-467"}
 
 {:title "decide: Supporting Participatory Budgeting with Online Argumentation"
  :type :publication
- :pdf "https://wwwcn.cs.uni-duesseldorf.de/publications/publications/library/Ebbinghaus2020a.pdf"
+ :authors ["Björn Ebbinghaus", "Martin Mauve"]
+ :pdf "https://publications.cs.hhu.de/library/Ebbinghaus2020a.pdf"
  :tags #{"demo", "online-argumentation", "participatory budgeting", "decision-making"}
  :date #inst "2020-09"
  :file "decide-comma20-demo.md"
