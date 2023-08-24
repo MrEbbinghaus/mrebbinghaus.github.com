@@ -12,7 +12,8 @@
    [html.archive :as archive]
    [html.index :as index]
    [html.publications :as publications]
-   [html.projects :as projects]))
+   [html.projects :as projects]
+   [utils :as utils]))
 
 
 (def posts (->> "posts.edn"
@@ -142,13 +143,6 @@
 ;;;; Generate atom feeds
 
 (xml/alias-uri 'atom "http://www.w3.org/2005/Atom")
-(import java.time.Instant)
-
-(defn rfc-3339-now []
-  (str (Instant/now)))
-
-(defn rfc-3339 [date]
-  (str (.toInstant date)))
 
 (def blog-root "https://blog.ebbinghaus.me/")
 
@@ -161,7 +155,7 @@
         [::atom/title "Björn's Blog"]
         [::atom/link {:href (str blog-root "atom.xml") :rel "self"}]
         [::atom/link {:href blog-root}]
-        [::atom/updated (rfc-3339-now)]
+        [::atom/updated (utils/rfc-3339-now)]
         [::atom/id blog-root]
         [::atom/author
          [::atom/name "Björn Ebbinghaus"]]
@@ -180,8 +174,8 @@
              [::atom/category
               {:term (name tag)
                :label (name tag)}])
-           [::atom/published (rfc-3339 date)]
-           [::atom/updated (rfc-3339 date)]
+           [::atom/published (utils/rfc-3339 date)]
+           [::atom/updated (utils/rfc-3339 date)]
            [::atom/content {:type "html"}
             [:-cdata (get @bodies file)]]])])
       xml/indent-str))
