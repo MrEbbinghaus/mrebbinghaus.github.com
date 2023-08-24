@@ -58,7 +58,7 @@
    (json-ld-tag post)))
 
 
-(defn page [{:keys [title body tags abstract] :as post}]
+(defn page [{:keys [title body tags] :as post}]
   (base
    {:title title
     :meta (post-meta post)
@@ -68,7 +68,6 @@
       [:h1 {:itemprop "name"} title]
       (utils/full-date-tag (:date post))
       (common/tag-row tags)
-      (when abstract [:p.abstract abstract])
 
       (hu/raw-string body)]
      (footer post))}))
