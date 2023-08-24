@@ -30,12 +30,15 @@
 
 
 ;;;; Sync images and CSS
-(let [assets (fs/file "assets")]
-  (when (fs/directory? assets)
-    (println "Copy assets")
-    (let [asset-out-dir (fs/create-dirs (fs/file out-dir "assets"))]
-      (fs/copy-tree "assets" asset-out-dir {:replace-existing true}))))
 
+(defn copy-assets! []
+  (let [assets (fs/file "assets")]
+    (when (fs/directory? assets)
+      (println "Copy assets")
+      (let [asset-out-dir (fs/create-dirs (fs/file out-dir "assets"))]
+        (fs/copy-tree "assets" asset-out-dir {:replace-existing true})))))
+
+(copy-assets!)
 
 (defn compile-css! []
   (print "Compile CSS... ")
