@@ -6,11 +6,12 @@
     [html.post :as post]))
 
 (defmethod common/entry :publication
-  [{:keys [title date tags] :as post}]
+  [{:keys [title date tags abstract] :as post}]
   [:article
    [:h2 [:a {:href (post/href post)} title]]
    (utils/month-tag date)
-   (common/tag-row tags)])
+   (common/tag-row tags)
+   (when abstract [:p abstract])])
 
 (defn page [{:keys [posts]}]
   (let [publications
