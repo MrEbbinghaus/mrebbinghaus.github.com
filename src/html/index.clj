@@ -20,7 +20,7 @@
   (let [latest-posts
         (->> posts
           (remove :preview)
-          (filter #(= :post (get % :type :post)))
+          (filter #(#{:post :publication} (get % :type :post)))
           (sort-by :date)
           reverse
           #_(take 3))]
