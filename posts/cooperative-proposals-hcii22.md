@@ -99,10 +99,10 @@ experiments also suggest that the specific voting system employed may
 have a significant impact on how the participants use the option to
 improve and merge proposals.</p>
 <p>The overall idea is inspired by observations of shortcomings in a
-recent participatory-budgeting process of ours <span class="citation" data-cites="Ebbinghaus2019a Ebbinghaus2020a">[<a href="#ref-Ebbinghaus2019a" role="doc-biblioref">1</a>, <a href="#ref-Ebbinghaus2020a" role="doc-biblioref">2</a>]</span> where we
+recent participatory-budgeting process of ours <span class="citation" data-cites="Ebbinghaus2019a Ebbinghaus2020a"><a href="#ref-Ebbinghaus2019a" role="doc-biblioref">1</a>, <a href="#ref-Ebbinghaus2020a" role="doc-biblioref">2</a></span> where we
 asked participants to make proposals on how to improve the study course
 of computer science at <span data-acronym-label="hhu" data-acronym-form="singular+short">hhu</span>. For that process, we used
-D-BAS <span class="citation" data-cites="Krauthoff2018b">[<a href="#ref-Krauthoff2018b" role="doc-biblioref">3</a>]</span>, a
+D‑BAS <span class="citation" data-cites="Krauthoff2018b"><a href="#ref-Krauthoff2018b" role="doc-biblioref">3</a></span>, a
 dialog-based argumentation system, to collect proposals and let
 participants argue about them. They were able to present pro- and
 contra-arguments to each other and to help inform newcomers to the
@@ -371,7 +371,7 @@ another proposal.</p></li>
 <li><p>The current ranking of the proposals (and thus also the current
 winner) must be transparent.</p></li>
 </ol>
-<p>We first used approval voting <span class="citation" data-cites="weber1995approval">[<a href="#ref-weber1995approval" role="doc-biblioref">4</a>]</span>. It is a good match regarding our
+<p>We first used approval voting <span class="citation" data-cites="weber1995approval"><a href="#ref-weber1995approval" role="doc-biblioref">4</a></span>. It is a good match regarding our
 requirements. By today most people are familiar with a notion of a
 <em>like</em>-Button. Just a single click is necessary to cast a vote,
 fulfilling the first requirement. It is easy to aggregate and display
@@ -387,7 +387,7 @@ win over older proposals. We decided on the basis of a gut feeling that
 newer proposals had less time to convince and woo away potential
 voters.</p>
 <p>We also considered more complex voting methods. In particular, a
-preference-based voting method, such as <span data-acronym-label="irv" data-acronym-form="singular+short">irv</span> <span class="citation" data-cites="brandt2016handbook">[<a href="#ref-brandt2016handbook" role="doc-biblioref">5</a>]</span>. In such a method participants have
+preference-based voting method, such as <span data-acronym-label="irv" data-acronym-form="singular+short">irv</span> <span class="citation" data-cites="brandt2016handbook"><a href="#ref-brandt2016handbook" role="doc-biblioref">5</a></span>. In such a method participants have
 to enter more precise votes. They have to rank proposals against each
 other. The winner is determined by repeatedly eliminating the worst
 candidate and recounting the remaining votes, until only the winner
@@ -398,7 +398,7 @@ preference voting, it is no longer possible to display a simple
 aggregate of votes of the other participants. This makes it difficult to
 compare two proposals and thus the overall state of the process is no
 longer easily tractable.</p>
-<p>The fact, that voting is iterative <span class="citation" data-cites="endriss2017trendsChapter4">[<a href="#ref-endriss2017trendsChapter4" role="doc-biblioref">6</a>]</span>
+<p>The fact, that voting is iterative <span class="citation" data-cites="endriss2017trendsChapter4"><a href="#ref-endriss2017trendsChapter4" role="doc-biblioref">6</a></span>
 in our system creates unique situations. While the effect of one’s own
 vote in a traditional election is only visible after the counting, the
 participants in our system see the effects immediately.</p>
@@ -440,7 +440,7 @@ of university life is still uncharted territory and therefore lends
 itself well to input and ideas from students and staff.</p>
 <p>In addition to payment for participation, as a special incentive, it
 was promised that we would forward the most approved proposal to the
-university’s Pro-Rector for Digitalization, who would then comment on
+university’s prorector for Digitalization, who would then comment on
 the proposal and the arguments relating to it. We then recruited the
 participants through advertising in lectures, the student council and
 personal letters. The majority of participants came from the Faculty of
@@ -518,7 +518,7 @@ system.</em></p>
 <p>Based on this knowledge we ran the second experiment with simple
 approval voting. Each participant can give as many or as few approvals
 as they want. Approval voting, which is a cardinal voting method, is
-immune against vote splitting <span class="citation" data-cites="poundstone2009gaming">[<a href="#ref-poundstone2009gaming" role="doc-biblioref">7</a>]</span>. This removes the risk for
+immune against vote splitting <span class="citation" data-cites="poundstone2009gaming"><a href="#ref-poundstone2009gaming" role="doc-biblioref">7</a></span>. This removes the risk for
 participants to vote for a new proposal that has not yet received much
 attention.</p>
 </section>
@@ -655,7 +655,7 @@ Survey Results</h3>
 <p>The final survey that both groups completed after their process,
 consists of several sections with different statements. Participants
 should indicate how much they agree with these statements. We used a
-Likert scale <span class="citation" data-cites="likert1932technique">[<a href="#ref-likert1932technique" role="doc-biblioref">8</a>]</span> from
+Likert scale <span class="citation" data-cites="likert1932technique"><a href="#ref-likert1932technique" role="doc-biblioref">8</a></span> from
 1 (strongly disagree) to 5 (strongly agree).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>The topics of the sections are:</p>
 <ol>
@@ -677,7 +677,7 @@ proposals.</p>
 regarding the outcome, had significantly more positive grades with the
 second experiment, where participants had unlimited approvals. We
 compared the statements of both groups with a two-sided t-test for
-different variances <span class="citation" data-cites="welch1947generalization">[<a href="#ref-welch1947generalization" role="doc-biblioref">9</a>]</span>,
+different variances <span class="citation" data-cites="welch1947generalization"><a href="#ref-welch1947generalization" role="doc-biblioref">9</a></span>,
 due to our low <span class="math inline"><em>n</em></span> of 10 and 12
 respectively. The values are presented in <a href="#tab:comparison" data-reference-type="ref" data-reference="tab:comparison">1</a>.</p>
 <div id="tab:comparison">
@@ -783,7 +783,7 @@ everyone.</td>
 <p>The clear difference in the results of the two experimental groups
 reinforces our belief that the perceived fairness of a voting system
 used is a key determinant of satisfaction with the process and outcome
-of a process in our application. We accept <a href="#hyp:satisfaction" data-reference-type="ref" data-reference="hyp:satisfaction">2</a>. This
+of a process in our application. We accept <a href="#hyp:satisfaction" data-reference-type="ref" data-reference="hyp:satisfaction">Hypothesis 2</a>. This
 should therefore be considered and investigated in further research.</p>
 </section>
 <section class="footnotes footnotes-end-of-section" role="doc-endnotes">
@@ -824,56 +824,58 @@ iterative voting method, the system already has information about which
 voter groups support which proposals during a decision-making process.
 This can be used for collaborative filtering, among other things, in the
 future.</p>
-<section id="acknowledgements" class="level2 unnumbered">
-<h3 class="unnumbered">Acknowledgements</h3>
+</section>
+<section id="acknowledgements" class="level1 unnumbered">
+<h2 class="unnumbered">Acknowledgements</h2>
 <p>Björn Ebbinghaus is a member of the PhD-programme <em>Online
 Participation</em>, supported by the North Rhine-Westphalian funding
 scheme <em>Forschungskollegs</em>.</p>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-Ebbinghaus2019a" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Ebbinghaus, B.: <span class="nocase">Decision
+<section id="acknowledgements" class="level1 unnumbered">
+<h2>References</h2>
+<ol id="refs" class="references csl-bib-body" role="doc-bibliography">
+<li id="ref-Ebbinghaus2019a" class="csl-entry" role="doc-biblioentry">
+<div class="csl-right-inline">Ebbinghaus, B.: <span class="nocase">Decision
 Making with Argumentation Graphs</span>, (2019). https://doi.org/<a href="https://doi.org/10.13140/RG.2.2.12515.09760/1">10.13140/RG.2.2.12515.09760/1</a>.</div>
 </div>
-<div id="ref-Ebbinghaus2020a" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Ebbinghaus, B., Mauve, M.: <span class="nocase">decide: Supporting Participatory Budgeting with Online
+<li id="ref-Ebbinghaus2020a" class="csl-entry" role="doc-biblioentry">
+<div class="csl-right-inline">Ebbinghaus, B., Mauve, M.: <span class="nocase">decide: Supporting Participatory Budgeting with Online
 Argumentation</span>. In: Prakken, H., Bistarelli, S., Francesco, S.,
 and Taticchi, C. (eds.) <span class="nocase">Computational Models of
 Argument. Proceedings of COMMA 2020</span>. pp. 463–464. <span>IOS
 Press</span> (2020). https://doi.org/<a href="https://doi.org/10.3233/FAIA200535">10.3233/FAIA200535</a>.</div>
 </div>
-<div id="ref-Krauthoff2018b" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline">Krauthoff, T., Meter, C., Betz, G., Baurmann,
-M., Mauve, M.: <span>D-BAS – A Dialog-Based Online Argumentation
+<li id="ref-Krauthoff2018b" class="csl-entry" role="doc-biblioentry">
+<div class="csl-right-inline">Krauthoff, T., Meter, C., Betz, G., Baurmann,
+M., Mauve, M.: <span>D‑BAS – A Dialog-Based Online Argumentation
 System</span>. In: Computational models of argument. pp. 325–336, Warsaw
 (2018). https://doi.org/<a href="https://doi.org/10.3233/978-1-61499-906-5-325">10.3233/978-1-61499-906-5-325</a>.</div>
 </div>
-<div id="ref-weber1995approval" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">4. </div><div class="csl-right-inline">Weber, R.J.: Approval voting. Journal of
+<li id="ref-weber1995approval" class="csl-entry" role="doc-biblioentry">
+<div class="csl-right-inline">Weber, R.J.: Approval voting. Journal of
 Economic Perspectives. 9, 39–49 (1995).</div>
 </div>
-<div id="ref-brandt2016handbook" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">5. </div><div class="csl-right-inline">Brandt, F., Conitzer, V., Endriss, U., Lang,
+<li id="ref-brandt2016handbook" class="csl-entry" role="doc-biblioentry">
+<div class="csl-right-inline">Brandt, F., Conitzer, V., Endriss, U., Lang,
 J., Procaccia, A.D.: Handbook of computational social choice. Cambridge
 University Press (2016).</div>
 </div>
-<div id="ref-endriss2017trendsChapter4" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">6. </div><div class="csl-right-inline">Meir, R.: Iterative voting. In: Endriss, U.
+<li id="ref-endriss2017trendsChapter4" class="csl-entry" role="doc-biblioentry">
+<div class="csl-right-inline">Meir, R.: Iterative voting. In: Endriss, U.
 (ed.) Trends in computational social choice. pp. 69–86. AI Access
 (2017).</div>
 </div>
-<div id="ref-poundstone2009gaming" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">7. </div><div class="csl-right-inline">Poundstone, W.: Gaming the vote: Why elections
+<li id="ref-poundstone2009gaming" class="csl-entry" role="doc-biblioentry">
+<div class="csl-right-inline">Poundstone, W.: Gaming the vote: Why elections
 aren’t fair (and what we can do about it). Macmillan (2009).</div>
 </div>
-<div id="ref-likert1932technique" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">8. </div><div class="csl-right-inline">Likert, R.: A technique for the measurement of
+<li id="ref-likert1932technique" class="csl-entry" role="doc-biblioentry">
+<div class="csl-right-inline">Likert, R.: A technique for the measurement of
 attitudes. Archives of psychology. (1932).</div>
 </div>
-<div id="ref-welch1947generalization" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">9. </div><div class="csl-right-inline">Welch, B.L.: The generalization of
+<li id="ref-welch1947generalization" class="csl-entry" role="doc-biblioentry">
+<div class="csl-right-inline">Welch, B.L.: The generalization of
 ‘STUDENT’s’problem when several different population varlances are
 involved. Biometrika. 34, 28–35 (1947).</div>
 </div>
-</div>
-</section>
+</ol>
 </section>

@@ -21,3 +21,10 @@
         @apply mr-1;
     }
 }
+
+.citation::before{
+    content: "[";
+}
+.citation::after{
+    content: "]";
+}
