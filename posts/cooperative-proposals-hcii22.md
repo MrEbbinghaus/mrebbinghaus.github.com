@@ -830,7 +830,8 @@ future.</p>
 <p>Björn Ebbinghaus is a member of the PhD-programme <em>Online
 Participation</em>, supported by the North Rhine-Westphalian funding
 scheme <em>Forschungskollegs</em>.</p>
-<section id="acknowledgements" class="level1 unnumbered">
+</section>
+<section id="references" class="level1 unnumbered">
 <h2>References</h2>
 <ol id="refs" class="references csl-bib-body" role="doc-bibliography">
 <li id="ref-Ebbinghaus2019a" class="csl-entry" role="doc-biblioentry">
