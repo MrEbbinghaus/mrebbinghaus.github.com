@@ -31,8 +31,7 @@
 (defn footer []
   [:footer.relative.h-16.text-center
    [:div.text-slate-400.dark:text-slate-700.text-center.p-4
-    (format "© %s Copyright " (utils/current-year))
-    [:a {:href "mailto:bjoern@ebbinghaus.me"} "Björn Ebbinghaus"]]])
+    "© 2021 Copyright Björn Ebbinghaus"]])
 
 (defn body [{:keys [content]}]
   [:body.bg-white.subpixel-antialiased.dark:bg-gray-900.dark:text-white.flex.flex-col.h-screen
