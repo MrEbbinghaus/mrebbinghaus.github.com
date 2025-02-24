@@ -850,7 +850,7 @@ Press</span> (2020). https://doi.org/<a href="https://doi.org/10.3233/FAIA200535
 M., Mauve, M.: <span>D‑BAS – A Dialog-Based Online Argumentation
 System</span>. In: Computational models of argument. pp. 325–336, Warsaw
 (2018). https://doi.org/<a href="https://doi.org/10.3233/978-1-61499-906-5-325">10.3233/978-1-61499-906-5-325</a>.</div>
-</div>
+</li>
 <li id="ref-weber1995approval" class="csl-entry" role="doc-biblioentry">
 <div class="csl-right-inline">Weber, R.J.: Approval voting. Journal of
 Economic Perspectives. 9, 39–49 (1995).</div>
