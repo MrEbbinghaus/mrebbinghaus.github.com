@@ -836,14 +836,14 @@ scheme <em>Forschungskollegs</em>.</p>
 <li id="ref-Ebbinghaus2019a" class="csl-entry" role="doc-biblioentry">
 <div class="csl-right-inline">Ebbinghaus, B.: <span class="nocase">Decision
 Making with Argumentation Graphs</span>, (2019). https://doi.org/<a href="https://doi.org/10.13140/RG.2.2.12515.09760/1">10.13140/RG.2.2.12515.09760/1</a>.</div>
-</div>
+</li>
 <li id="ref-Ebbinghaus2020a" class="csl-entry" role="doc-biblioentry">
 <div class="csl-right-inline">Ebbinghaus, B., Mauve, M.: <span class="nocase">decide: Supporting Participatory Budgeting with Online
 Argumentation</span>. In: Prakken, H., Bistarelli, S., Francesco, S.,
 and Taticchi, C. (eds.) <span class="nocase">Computational Models of
 Argument. Proceedings of COMMA 2020</span>. pp. 463–464. <span>IOS
 Press</span> (2020). https://doi.org/<a href="https://doi.org/10.3233/FAIA200535">10.3233/FAIA200535</a>.</div>
-</div>
+</li>
 <li id="ref-Krauthoff2018b" class="csl-entry" role="doc-biblioentry">
 <div class="csl-right-inline">Krauthoff, T., Meter, C., Betz, G., Baurmann,
 M., Mauve, M.: <span>D‑BAS – A Dialog-Based Online Argumentation
@@ -853,29 +853,29 @@ System</span>. In: Computational models of argument. pp. 325–336, Warsaw
 <li id="ref-weber1995approval" class="csl-entry" role="doc-biblioentry">
 <div class="csl-right-inline">Weber, R.J.: Approval voting. Journal of
 Economic Perspectives. 9, 39–49 (1995).</div>
-</div>
+</li>
 <li id="ref-brandt2016handbook" class="csl-entry" role="doc-biblioentry">
 <div class="csl-right-inline">Brandt, F., Conitzer, V., Endriss, U., Lang,
 J., Procaccia, A.D.: Handbook of computational social choice. Cambridge
 University Press (2016).</div>
-</div>
+</li>
 <li id="ref-endriss2017trendsChapter4" class="csl-entry" role="doc-biblioentry">
 <div class="csl-right-inline">Meir, R.: Iterative voting. In: Endriss, U.
 (ed.) Trends in computational social choice. pp. 69–86. AI Access
 (2017).</div>
-</div>
+</li>
 <li id="ref-poundstone2009gaming" class="csl-entry" role="doc-biblioentry">
 <div class="csl-right-inline">Poundstone, W.: Gaming the vote: Why elections
 aren’t fair (and what we can do about it). Macmillan (2009).</div>
-</div>
+</li>
 <li id="ref-likert1932technique" class="csl-entry" role="doc-biblioentry">
 <div class="csl-right-inline">Likert, R.: A technique for the measurement of
 attitudes. Archives of psychology. (1932).</div>
-</div>
+</li>
 <li id="ref-welch1947generalization" class="csl-entry" role="doc-biblioentry">
 <div class="csl-right-inline">Welch, B.L.: The generalization of
 ‘STUDENT’s’problem when several different population varlances are
 involved. Biometrika. 34, 28–35 (1947).</div>
-</div>
+</li>
 </ol>
 </section>
