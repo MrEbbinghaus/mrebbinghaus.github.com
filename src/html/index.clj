@@ -10,8 +10,9 @@
   [{:keys [title date tags body abstract] :as post}]
   [:article
    [:h2 [:a {:href (post/href post)} title]]
-   (utils/full-date-tag date)
-   (common/tag-row tags)
+   [:aside
+    (utils/full-date-tag date)
+    (common/tag-row tags)]
    (if abstract
      [:p abstract]
      (hu/raw-string body))])
@@ -25,8 +26,8 @@
           reverse
           #_(take 3))]
     (base/base
-      {:title "Björn's Blog"
+      {:title "Björn Ebbinghaus"
        :content
        (list
-         [:h1.mt-3.sr-only "Last posts"]
+         [:h1.mt-3.sr-only "Latest posts"]
          (common/list {:posts latest-posts}))})))

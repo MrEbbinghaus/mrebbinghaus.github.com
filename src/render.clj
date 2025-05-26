@@ -42,7 +42,7 @@
 
 (defn compile-css! []
   (print "Compile CSS... ")
-  (let [{:keys [exit out err]} (sh "npx" "tailwindcss" "-i" "templates/base.css" "-c" "tailwind.config.js")]
+  (let [{:keys [exit out err]} (sh "npx" "@tailwindcss/cli" "-i" "templates/base.css" "-c" "tailwind.config.js")]
     (if (zero? exit)
       (do
         (println "Done")

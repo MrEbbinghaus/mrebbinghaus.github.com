@@ -1,7 +1,7 @@
 (ns html.post
   (:require
    [html.base :refer [base]]
-   [clojure.data.json :as json]
+   [cheshire.core :as json]
    [hiccup.util :as hu]
    [utils :as utils]
    [clojure.string :as str]
@@ -37,7 +37,7 @@
 
 (defn json-ld-tag [post]
   [:script {:type "application/ld+json"}
-   (-> post json-ld json/write-str hu/raw-string)])
+   (-> post json-ld json/generate-string hu/raw-string)])
 
 
 (defn href [{:keys [file]}]

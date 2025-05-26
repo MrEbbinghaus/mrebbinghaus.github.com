@@ -1,4 +1,4 @@
-{:title "Fulcro Explained 1"
+{:title "Fulcro Explained"
  :tags #{"clojure", "fulcro", "tutorial"}
  :file "fulcro-explained-1.md"
  :aliases #{"fulcro-tutorial-1"}
