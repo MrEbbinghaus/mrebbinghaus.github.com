@@ -9,8 +9,9 @@
   [{:keys [title date project/status tags] :as post}]
   [:article
    [:h2 [:a {:href (post/href post)} title]]
-   (utils/full-date-tag date)
-   (common/tag-row tags)
+   [:aside
+    (utils/full-date-tag date)
+    (common/tag-row tags)]
    (when status
      [:p "Status: "
       (case status

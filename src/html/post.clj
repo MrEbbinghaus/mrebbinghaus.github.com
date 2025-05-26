@@ -66,8 +66,9 @@
     (list
      [:article.pt-4.md:pt-8
       [:h1 {:itemprop "name"} title]
-      (utils/full-date-tag (:date post))
-      (common/tag-row tags)
+      [:aside
+       (utils/full-date-tag (:date post))
+       (common/tag-row tags)]
 
       (hu/raw-string body)]
      (footer post))}))
