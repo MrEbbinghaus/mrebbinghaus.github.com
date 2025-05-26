@@ -42,12 +42,14 @@
 
 (defn compile-css! []
   (print "Compile CSS... ")
-  (let [{:keys [exit out err]} (sh "npx" "@tailwindcss/cli" "-i" "templates/base.css" "-c" "tailwind.config.js")]
+  (let [{:keys [exit out err]} (sh "npx" "@tailwindcss/cli" "-i" "templates/base.css")]
     (if (zero? exit)
       (do
         (println "Done")
         (spit (fs/file out-dir "base.css") out))
-      (println "ERROR\n" err))))
+      (do 
+        (println "ERROR\n" err)
+        (System/exit 1)))))
 
 ;;;; Generate posts from markdown
 
